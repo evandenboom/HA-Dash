@@ -1,0 +1,12 @@
+last_motion_begane_grond:
+  value: 'Unknown'
+  restore: true
+  attributes:
+    icon: mdi:map-marker
+    name: "Laatste detectie Begane Grond"
+last_motion_1e_verdieping:
+  value: 'Unknown'
+  restore: true
+  attributes:
+    icon: mdi:map-marker
+    name: "Laatste detectie Verdieping 1"

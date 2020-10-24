@@ -1,0 +1,6 @@
+- id: '1575296280590'
+  name: TV-night
+  entities:
+    light.koof_woonkamer:
+      brightness: 79
+      state: 'on'

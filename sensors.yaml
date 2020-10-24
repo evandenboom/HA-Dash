@@ -1,0 +1,137 @@
+#      - platform: dsmr
+#        port: /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AI1X36IO-if00-port0
+#        dsmr_version: 5
+      
+- platform: rflink
+  automatic_add: true
+  
+#Vandaag
+#      - platform: template
+#        sensors:
+#          vandaag:
+#            friendly_name: Vandaag
+#            entity_id: sensor.vandaag
+#            value_template: '>
+#             {{ now().strftime("%A %d %B %Y") }}'
+        
+- platform: template
+  sensors:
+    grid_power_consumption:
+      friendly_name: 'Grid power consumption'
+      unit_of_measurement: 'W'
+      value_template: >-
+        {{ (1000 * (states("sensor.power_consumption")) | float) | int }}
+    grid_power_production:
+      friendly_name: 'Grid power production'
+      unit_of_measurement: 'W'
+      value_template: >-
+        {{ (1000 * (states("sensor.power_production")) | float) | int }}
+    irrigation_weather_outlook:
+      friendly_name: "Irrigation weather outlook"
+      value_template: "{{ state_attr('sensor.current_weather_owm', 'temp') }}"
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_utc'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+
+- platform: average
+  name: 'Average Temperature'
+  precision: 1
+  entities:
+    - sensor.temperature_9
+
+- platform: template
+  sensors:
+    average_house_temperature:
+      value_template: '{{ states.sensor.average_temperature.state }}°C'
+
+- platform: template
+  sensors:
+    current_scenes_on:
+      friendly_name: All Scenes Currently On
+      value_template: >-
+        {{ states|selectattr('entity_id','in',state_attr('group.alle_scenes','entity_id'))|selectattr('state','eq','on')|list|count }}
+
+- platform: template
+  sensors:
+    media_players_playing:
+      value_template: >
+        {% if states.media_player.google_home_kantoor.state == 'playing' %}
+          Playing
+        {% elif states.media_player.google_home_woonkamer.state == 'playing' %}
+          Playing
+        {% elif states.media_player.stb_arris_uhd.state == 'playing' %}
+          Playing
+        {% elif states.media_player.stb_arris_uhd_2.state == 'playing' %}
+          Playing
+        {% elif states.media_player.google_home_kantoor.state == 'paused' %}
+          Paused
+        {% elif states.media_player.google_home_woonkamer.state == 'paused' %}
+          Paused
+        {% elif states.media_player.stb_arris_uhd.state.state == 'paused' %}
+          Paused
+        {% elif states.media_player.stb_arris_uhd_2.state == 'paused' %}
+          Paused
+        {% else %}
+          Not Playing
+        {% endif %}     
+
+- platform: template
+  sensors:
+    current_power_usage:
+      value_template: "{{ (states('sensor.grid_power_consumption')|float * 1000) |round(0) }} W"
+      unit_of_measurement: 'W'
+      friendly_name: Current Power Usage
+
+- platform: waze_travel_time
+  name: Travel Time to Home Elliot
+  origin: person.elliot
+  destination: zone.home
+  region: EU
+
+- platform: waze_travel_time
+  name: Travel Time to Work Elliot
+  origin: person.elliot
+  destination: zone.rijkskantoor
+  region: EU
+
+- platform: waze_travel_time
+  name: Travel Time to School Kim
+  origin: person.kim
+  destination: zone.graaf_engelbrecht
+  region: EU
+
+- platform: waze_travel_time
+  name: Travel Time to Home Kim
+  origin: person.kim
+  destination: zone.home
+  region: EU  
+
+- platform: waze_travel_time
+  name: Travel Time to School Max
+  origin: person.max
+  destination: zone.graaf_engelbrecht
+  region: EU 
+
+- platform: waze_travel_time
+  name: Travel Time to Home Max
+  origin: person.max
+  destination: zone.home
+  region: EU 
+
+- platform: template
+  sensors:
+    smartphone_kim_battery_level:
+      value_template: '{{ state_attr("device_tracker.google_maps_115305887383945385383", "battery_level")}}%'
+
+- platform: template
+  sensors:
+    smartphone_max_battery_level:
+      value_template: '{{ state_attr("device_tracker.google_maps_104742499472119555757", "battery_level")}}%'

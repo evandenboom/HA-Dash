@@ -1,0 +1,115 @@
+switch.qubino_zmnhbdx_flush_2_relays_switch_11:
+  icon: mdi:lightbulb
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3:
+  icon: mdi:lightbulb
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch:
+  icon: mdi:lightbulb
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_2:
+  icon: mdi:lightbulb
+light.lamp_woonkamer: {}
+device_tracker.google_maps_104742499472119555757:
+  entity_picture: /local/max_face.png
+binary_sensor.kaipule_pir_celling_sensor_sensor:
+  device_class: motion
+binary_sensor.kaipule_pir_celling_sensor_sensor_2:
+  device_class: motion
+binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor:
+  device_class: motion
+binary_sensor.0x00158d00026eecea_contact:
+  device_class: window
+binary_sensor.0x00158d0002726273_contact:
+  device_class: door
+binary_sensor.0x00158d0002b9335d_occupancy:
+  device_class: motion
+binary_sensor.0x00158d0002b6d2c4_occupancy:
+  device_class: motion
+binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_2:
+  device_class: motion
+binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_3:
+  device_class: motion
+switch.qubino_goap_zmnhdd1_flush_dimmer_switch: {}
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11:
+  icon: mdi:lightbulb
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_10:
+  icon: mdi:lightbulb
+sensor.0x00158d0002772b1a_humidity: {}
+sensor.alectov1_0060_temp:
+  friendly_name: Buitentemperatuur Zon
+light.newkaku_03582c00_3:
+  friendly_name: Aquarium Max (new)
+sensor.cresta_3a01_temp:
+  friendly_name: Buitentemperatuur Schaduw
+sensor.alectov1_004a_rain:
+  friendly_name: Regenmeter
+sensor.alectov1_0060_wings:
+  friendly_name: Wind Gust
+  unit_of_measurement: Beaufort
+sensor.alectov1_0060_windir:
+  friendly_name: Wind Richting Gr
+sensor.alectov1_0060_winsp:
+  friendly_name: Windkracht
+  unit_of_measurement: Beaufort
+light.newkaku_03582c00_2:
+  friendly_name: Aquarium Kim (new)
+light.newkaku_013f0400_3: {}
+switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2:
+  icon: mdi:sony-playstation
+input_boolean.vacation_mode:
+  icon: mdi:beach
+sensor.tv_vip_lounge:
+  icon: mdi:television
+sensor.tv_woonkamer:
+  icon: mdi:television
+switch.qubino_goap_zmnhdd1_flush_dimmer_switch_2:
+  friendly_name: Wandlamp Woonkamer
+light.newkaku_013f0400_2: {}
+device_tracker.sm_g965f:
+  friendly_name: Elliot SGS9+
+sensor.nodered_5ea50184_6b383:
+  unit_of_measurement: mm
+sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_2:
+  friendly_name: Playstation Stroomverbruik
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19:
+  icon: mdi:lightbulb
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12:
+  icon: mdi:lightbulb
+binary_sensor.000_cell_motion_detection:
+  friendly_name: PIR Sensor Voordeur
+switch.qubino_goap_zmnhbdx_flush_2_relays_switch_4:
+  icon: mdi:lightbulb
+climate.woonk_vloerv_2:
+  friendly_name: Woonk. Vloerv.
+  type: thermostat
+climate.woonk_rad_2:
+  type: thermostat
+  friendly_name: Woonk. Rad.
+climate.badkamer_2:
+  friendly_name: Badkamer
+  type: themostat
+climate.kamer_kim_2:
+  friendly_name: Kamer Kim
+  type: thermostat
+climate.kamer_max_2:
+  friendly_name: Kamer Max
+  type: thermostat
+climate.mast_bedroom_2:
+  friendly_name: Mast. Bedroom
+  type: thermostat
+climate.kantoor_2:
+  friendly_name: Kantoor
+  type: thermostat
+climate.vip_lounge_2:
+  friendly_name: VIP Lounge
+  type: thermostat
+  camera.achtertuin:
+    friendly_name: Achtertuin
+    type: camera
+  camera.begane_grond:
+    friendly_name: Woonkamer 1
+    type: camera
+  camera.begane_grond_2:
+    friendly_name: Woonkamer 2
+    type: camera
+  camera.voordeur_mediaprofile_channel1_mainstream:
+    friendly_name: Voordeur
+    type: camera

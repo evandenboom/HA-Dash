@@ -1,0 +1,34 @@
+- platform: limitlessled
+  bridges:
+    - host: !secret light.bridges.host1
+      groups:
+      - number: 1
+        type: rgbww
+        name: Lamp Woonkamer
+      - number: 2
+        type: rgbww
+        name: Koof Woonkamer
+      - number: 3
+        type: rgbww
+        name: Lamp Keuken
+        fade: true
+      - number: 4
+        type: rgbww
+        name: Koof Keuken
+      - number: 1
+        type: bridge-led
+        name: iBox Woonkamer
+    - host: !secret light.bridges.host2
+      groups:
+      - number: 1
+        type: rgbww
+        name: Lamp VIP-Lounge
+      - number: 3
+        type: rgbww
+        name: Lamp Kantoor
+      - number: 1
+        type: bridge-led
+        name: iBox VIP-Lounge
+        
+- platform: rflink
+  automatic_add: true

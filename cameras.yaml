@@ -1,0 +1,13 @@
+ - platform: ffmpeg
+   name: Begane Grond
+   input: !secret camera_begane_grond.input
+   
+ - platform: ffmpeg
+   name: Begane Grond 2
+   input: !secret camera_begane_grond2.input
+ 
+ - platform: ffmpeg
+   name: Achtertuin
+   input: !secret camera_achtertuin.input
+
+

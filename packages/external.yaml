@@ -1,0 +1,22 @@
+tts:
+  - platform: google_translate
+    cache: true
+    base_url: !secret tts.base_url
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+   
+mind:
+  username: !secret mind.username
+  password: !secret mind.password
+  client_id: !secret mind.client_id
+  client_secret: !secret mind.client_secret
+  
+ziggonext:
+  username: !secret ziggo_username
+  password: !secret ziggo_password

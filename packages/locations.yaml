@@ -1,0 +1,26 @@
+device_tracker:
+  - platform: !secret device_tracker.platform
+    username: !secret device_tracker.username
+    max_gps_accuracy: 25
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: true
+
+zone:      
+   - name: !secret zone.loc1.name
+     latitude: !secret zone.loc1.latitude
+     longitude: !secret zone.loc1.longitude
+     radius: 25
+     icon: !secret zone.loc1.icon
+     
+   - name: !secret zone.loc2.name
+     latitude: !secret zone.loc2.latitude
+     longitude: !secret zone.loc2.longitude
+     radius: 75
+     icon: !secret zone.loc2.icon
+     
+   - name: !secret zone.loc3.name
+     latitude: !secret zone.loc3.latitude
+     longitude: !secret zone.loc3.longitude
+     radius: 50
+     icon: !secret zone.loc3.icon

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hass-vandenboom-org-f6507",
+  "private_key_id": "61e9d5c85e1b85cbb7179b3aa896145ee6fd8128",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC21tTqOYX6XL0n\n/b3v4mWtZTfa/WUAztb4zrOXSiFEBzB9cdTChMziwbC+Nz/CA7y95HL5MeUbYTym\npvmHMB3HhVM9vbbJBQjfxL6DO6vLON9TbB72SIpP926nflAcfoEcQCJxqLay2WFC\nYjLenvEvfaBmMjQZhckMs0jy3D216RRS0hC+bKjMyn2z5Vdp6LC2jIf4mU6zqA4h\nLnshub+R7GrlFAIdYkDzlB0zdo4F9RcyscLzCFaK6iC4zxDmT936H6+AKNe4SWk1\n4K9xJNb2UffddbFulHC2I60sbPglTMFO6SXuRS2Xoe83VhX1DpGWKudZeIXrdMPe\n3ixVjPIfAgMBAAECggEASpueVRd09sUaALQXacgZ0mgPo0IsEWjVqsB54x3CNkay\nwDWPanKTQmJkEzJrR2mL/na2fb4g7Yu/modfIg190Vkzrul3qU5vIRRg4x8Zynri\nEmH3vmq6WcgvNJSj7wSl/ZekFnoQVynB+LsmY9Y6t7TNG3aX8OQ5NoAAH+3EFrKc\n2fqL+xeiv2fQAGEXnrgzJAOf14HarW3F/9qPBTltRw5/kpnOoSGkq8ts/grX3080\ngNsy+tQGM9CyAkN5DZnOIpsvLVmCAFNDWY7z0fJDqIgAfE7wrqkfq0d0MFVpOMEA\n/sO4ALwvIY2vPPkLTjS6TQmijHRMdej/OF/HkrXC6QKBgQDpzWeRn3PVMnWFpN1x\n+fZsGqaSHIgLYRYyzZYDBV4w8OiiXQeykp/Sphc94uOdWcOcGDVNK8V4GlIz5JpS\nBxtd14jtB7RCnfL1khR/GBEtdpi5rPBw8k1XjMZT4nJZHgCK5mpAX7LyOGzGVBdB\nF+K1iYaRbin/QsYvme7o3mhk9wKBgQDIMsLFts85jXN/WVQ9OLGq3j1ouhd+Ow86\nMQmMf4IY3WR2XNBUjJcO+kGfp/Sz83d25oJDQzba0qX9PLAz4lAT0yQwn8iL8/GM\nVaNFbGOadkiHMX9l8pM/H5SArZ7+rZk/QDiRV0IHFoERrU4PIsZQ9sYGtB3JeszP\nCuZQQTYaGQKBgBJqVWAI+SyvvsX6CF8z2w8Ewl371VNgIEl8G/a884BTWV+AiFyu\nY9xJrMb5GgiIy3l+BqS/b9xX5mWj+evAF426rlRNKQueOUbSbL7d/GxiTQFC9+VN\nkH323qA409zlGhHWuEO9xfCCNT8h3HsKEJdP78OAs9ohPk79hu3cpshdAoGADWwp\n1uu81RUAy2cH2Nr2PoiMAXuIm7QF/1bOVxctd9FQLQdoCGMstZpd0ACIzY/jUJt/\n3FajVOSOsH3jKndf+xRK9t+fqJKAfXI4ci0kOHT5w+azrfgnmzHY2Q/K+zRUdAMw\nR75b9PGzUaYW97jTJxaEjGqDHMEY/kCy1Gqq3/ECgYEAsr12+uxk9UMs3x8U+rEX\n1+VeC+fghxO+QWdUwllOY/+p5GxXdxKHZsv6nvje3J5V1JYFFBGFHZvKiw4H18Rk\nidogwMrW54KXOnttGCBs1B/PrsN6zY7fpwuK04IAGFMNv6fwN3B5JLaWBrPL4svi\n9YzhXAxaW+zkpYWPz981IU0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-assistant@hass-vandenboom-org-f6507.iam.gserviceaccount.com",
+  "client_id": "101426280840061338732",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-assistant%40hass-vandenboom-org-f6507.iam.gserviceaccount.com"
+}

@@ -1,0 +1,8 @@
+include:
+  domains:
+    - switch
+    - light
+    - person
+    - binary_sensor
+    - climate
+    - sensor

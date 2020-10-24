@@ -1,0 +1,93 @@
+group:
+  kerstverlichting_binnen:
+    name: Kerstverlichting binnen
+    entities:
+      - switch.kerstboom
+      - switch.kerstdorp
+      - switch.guirlande
+      - switch.hert_keukenraam
+
+automation:
+- id: '1575802882265'
+  alias: Kerstverlichting binnen aan
+  description: ''
+  trigger:
+  - at: '17:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kerstdorp
+    service: switch.turn_on
+  - data:
+      entity_id: switch.kerstboom
+    service: switch.turn_on
+  - data:
+      entity_id: switch.guirlande
+    service: switch.turn_on
+  - data:
+      entity_id: switch.hert_keukenraam
+    service: switch.turn_on
+- id: '1575803218143'
+  alias: Kerstverlichting binnen uit
+  description: ''
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kerstdorp
+    service: switch.turn_off
+  - data:
+      entity_id: switch.kerstboom
+    service: switch.turn_off
+  - data:
+      entity_id: switch.guirlande
+    service: switch.turn_off
+  - data:
+      entity_id: switch.hert_keukenraam
+    service: switch.turn_off
+- id: '1575803346442'
+  alias: Kerstverlichting buiten aan
+  description: ''
+  trigger:
+  - event: sunset
+    offset: '-30'
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kerstverlichting_achtertuin
+    service: switch.turn_on
+  - data:
+      entity_id: switch.lichtslang
+    service: switch.turn_on
+  - data:
+      entity_id: switch.kerstboom_buiten
+    service: switch.turn_on
+- id: '1575803604929'
+  alias: Lichtslang buiten uit
+  description: ''
+  trigger:
+  - at: '23:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.lichtslang
+    service: switch.turn_off
+- id: '1575803723620'
+  alias: Kerstverlichting buiten uit
+  description: ''
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.kerstboom_buiten
+    service: switch.turn_off
+  - data:
+      entity_id: switch.kerstverlichting_achtertuin
+    service: switch.turn_off

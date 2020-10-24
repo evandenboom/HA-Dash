@@ -1,0 +1,8 @@
+#evohome:
+#  username: !secret evohome.username
+#  password: !secret evohome.password
+#  scan_interval: 180
+
+evohome_cc:
+  scan_interval: 60
+  packet_log: /config/packets.log  

@@ -1,0 +1,82 @@
+###############################################
+## Home-Assistant
+################################################
+homeassistant:
+  packages: !include_dir_named packages
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks: 
+        !secret homeassistant.trusted_networks
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+
+
+http:
+  server_port: !secret http.server_port
+  base_url: !secret http.base_url
+  ssl_certificate: !secret http.ssl_certificate
+  ssl_key: !secret http.ssl_key
+  ip_ban_enabled: true
+  login_attempts_threshold: 5 
+
+lovelace:
+  mode: storage
+  dashboards: !include dashboards.yaml
+ 
+automation: !include automations.yaml
+camera: !include cameras.yaml
+group: !include groups.yaml
+history: !include history.yaml
+light: !include lights.yaml
+logbook: !include logbook.yaml
+logger: !include logger.yaml
+recorder: !include recorder.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+variable: !include variables.yaml
+
+frontend:
+#  themes: !include_dir_merge_named themes
+
+browser_mod:
+config:
+discovery:
+ffmpeg:
+lovelace_gen:
+map:
+mobile_app:
+person:
+stream:  
+sun:
+system_health:
+webhook:
+
+alarm_control_panel:
+  - platform: manual  
+
+input_boolean:
+  vacation_mode:
+#    initial: off
+
+webostv:
+  host: !secret webostv_ip
+  name: Woonkamer TV
+  turn_on_action:
+    service: persistent_notification.create
+    data:
+      message: "Turn on action"
+  customize:
+    sources:
+      - livetv
+      - decoder
+      - thuisbioscoop
+      - gameconsole
+
+ 
+
+
+
+

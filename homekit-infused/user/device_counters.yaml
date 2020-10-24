@@ -1,0 +1,78 @@
+# Homekit Infused Device Counters
+
+# Fill this file to have the badges and device counters work in HKI.
+# You can use these sensors in your badges.
+
+
+# All Radiator Valves or Climate entities (ONLY climate entities can be used here!, if you have a single thermostat put it here as well)
+all_climate_entities:
+  entities:
+    - climate.badkamer_2
+    - climate.controller
+    - climate.kamer_kim_2
+    - climate.kamer_max_2
+    - climate.kantoor_2
+    - climate.mast_bedroom_2
+    - climate.vip_lounge_2
+    - climate.woonk_rad_2
+    - climate.woonk_vloerv_2
+# All Fans (Enter all your fans in here)
+all_fan_entities:
+  entities:
+    - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_7
+    - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_8
+# Window Sensors
+all_window_sensor_entities:
+  entities:
+    - binary_sensor.openclose_6
+# Door Sensors
+all_door_sensor_entities:
+  entities:
+    binary_sensor.openclose_7
+# Motion Sensors
+all_motion_sensor_entities:
+  entities:
+    - binary_sensor.motion_sensor
+    - binary_sensor.000_cell_motion_detection
+    - binary_sensor.presence_5
+    - binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor
+    - binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_2
+    - binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_3
+# All Detectors (smoke/gas/fire etc)
+all_detector_entities:
+  entities:
+    - input_boolean.empty
+# All Binary Sensors (put all your binary sensors here e.g. smoke/gas/fire/door/window/motion etc. You can use this as a counter on the security button)
+all_binary_sensor_entities:
+  entities:
+    - binary_sensor.gf134r_locked
+# All Lights
+all_light_entities:
+  entities:
+    - light.dimmable_light_2
+    - light.koof_keuken
+    - light.koof_woonkamer
+    - light.lamp_keuken
+    - light.lamp_woonkamer
+    - light.qubino_goap_zmnhdd1_flush_dimmer_level
+    - light.qubino_goap_zmnhdd1_flush_dimmer_level_2
+    - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_4
+    - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11
+    - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12
+# All Devices
+all_device_switch_entities:
+  entities:
+    - switch.on_off_plug_in_unit_3
+    - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch
+    - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2    
+# All Covers
+all_cover_entities:
+  entities:
+    - cover.rfy_000001_1
+    - cover.rfy_000002_1
+    - cover.rfy_000003_1
+    - cover.rfy_000004_1
+# All Garage Doors
+all_garage_door_entities:
+  entities:
+    - input_boolean.empty
