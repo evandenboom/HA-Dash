@@ -52,7 +52,7 @@ person:
 stream:  
 sun:
 system_health:
-webhook:
+#webhook:
 
 alarm_control_panel:
   - platform: manual  
