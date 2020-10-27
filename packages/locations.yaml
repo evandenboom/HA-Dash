@@ -1,3 +1,5 @@
+#locations
+
 device_tracker:
   - platform: !secret device_tracker.platform
     username: !secret device_tracker.username

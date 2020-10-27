@@ -1,3 +1,5 @@
+#heating
+
 #evohome:
 #  username: !secret evohome.username
 #  password: !secret evohome.password

@@ -1,3 +1,5 @@
+#weather
+
 homeassistant:
   customize:
     weather.br_unknown_station:

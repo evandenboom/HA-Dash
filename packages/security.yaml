@@ -1,3 +1,5 @@
+#security
+
 binary_sensor:
   - platform: template
     sensors:
