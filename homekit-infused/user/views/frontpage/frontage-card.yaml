@@ -1,5 +1,6 @@
 # lovelace_gen
 
+# frontpage
 - type: custom:mod-card
   style: |
     ha-card {
