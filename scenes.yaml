@@ -2,5 +2,16 @@
   name: TV-night
   entities:
     light.koof_woonkamer:
+      min_mireds: 154
+      max_mireds: 370
+      effect_list:
+      - colorloop
+      - night
+      - white
       brightness: 79
+      friendly_name: Koof Woonkamer
+      assumed_state: false
+      supported_features: 63
+      icon: mdi:lightbulb
       state: 'on'
+  icon: mdi:television
