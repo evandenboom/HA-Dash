@@ -1,3 +1,5 @@
+# switches
+
 platform: rflink
 device_defaults:
   signal_repetitions: 3
