@@ -135,10 +135,3 @@
   sensors:
     smartphone_max_battery_level:
       value_template: '{{ state_attr("device_tracker.google_maps_104742499472119555757", "battery_level")}}%'
-
-- platform: template
-  sensors:
-    current_scenes_on:
-      friendly_name: All Scenes Currently On
-      value_template: >-
-        {{ states|selectattr('entity_id','in',state_attr('group.alle_scenes','entity_id'))|selectattr('state','eq','on')|list|count }}
