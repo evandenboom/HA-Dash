@@ -1,0 +1,25 @@
+- platform: template
+  sensors:
+    wind_dir:
+      friendly_name: 'Windrichting'
+      value_template: >-
+        {% set wind_dir = states.sensor.alectov1_0328_windir.state %}
+        {% if wind_dir == null %}"-"
+        {% elif wind_dir | float<=11 %}N
+        {% elif wind_dir | float>348 %}N
+        {% elif 11 < (wind_dir|float) <=34 %}NNO
+        {% elif 34 < (wind_dir|float) <=56 %}NO
+        {% elif 56 < (wind_dir|float) <=79 %}}ONO
+        {% elif 79 < (wind_dir|float) <=101 %}O
+        {% elif 101 < (wind_dir|float) <=124 %}OZO
+        {% elif 124 < (wind_dir|float) <=146 %}ZO
+        {% elif 146 < (wind_dir|float) <=169 %}ZZO
+        {% elif 169 < (wind_dir|float) <=191 %}Z
+        {% elif 191 < (wind_dir|float) <=214 %}ZZW
+        {% elif 214 < (wind_dir|float) <=236 %}ZW
+        {% elif 236 < (wind_dir|float) <=259 %}WZW
+        {% elif 259 < (wind_dir|float) <=281 %}W
+        {% elif 281 < (wind_dir|float) <=304 %}WWN
+        {% elif 304 < (wind_dir|float) <=326 %}NW
+        {% elif 326 < (wind_dir|float) <=348 %}NNW
+        {%- endif %}

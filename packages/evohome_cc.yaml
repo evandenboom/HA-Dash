@@ -7,4 +7,6 @@
 
 evohome_cc:
   scan_interval: 60
-  packet_log: /config/packets.log  
+  packet_log: /config/packets.log
+  schema:
+    controller: 01:108436

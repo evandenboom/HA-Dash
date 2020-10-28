@@ -30,6 +30,7 @@ sensor: !include_dir_merge_list configuration/sensors/
 switch: !include_dir_merge_list configuration/switches/
 variable: !include_dir_merge_named configuration/variables/
 binary_sensor: !include_dir_merge_list configuration/binary_sensors/
+weather: !include_dir_merge_list configuration/weather/
 
 
 #logging
