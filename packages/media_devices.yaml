@@ -1,0 +1,13 @@
+webostv:
+  host: !secret webostv_ip
+  name: Woonkamer TV
+  turn_on_action:
+    service: persistent_notification.create
+    data:
+      message: "Turn on action"
+  customize:
+    sources:
+      - livetv
+      - decoder
+      - thuisbioscoop
+      - gameconsole

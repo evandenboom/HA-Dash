@@ -11,18 +11,15 @@ homeassistant:
   customize: !include customize.yaml
   customize_glob: !include configuration/customize_glob/customize_glob.yaml
 
+ #>> The http integration serves all files and data required for the Home Assistant frontend. <<
 http:
   server_port: !secret http.server_port
-  base_url: !secret http.base_url
   ssl_certificate: !secret http.ssl_certificate
   ssl_key: !secret http.ssl_key
   ip_ban_enabled: true
   login_attempts_threshold: 5 
 
-lovelace:
-  mode: storage
-  dashboards: !include configuration/dashboards/dashboards.yaml
-
+#>> Additional configuration <<
 camera: !include_dir_merge_list configuration/cameras/
 group: !include_dir_merge_named configuration/groups/
 light: !include_dir_merge_list configuration/lights/
@@ -31,58 +28,59 @@ switch: !include_dir_merge_list configuration/switches/
 variable: !include_dir_merge_named configuration/variables/
 binary_sensor: !include_dir_merge_list configuration/binary_sensors/
 weather: !include_dir_merge_list configuration/weather/
+input_boolean: !include_dir_merge_named configuration/input_booleans/
 
-
-#logging
+#>> Logging <<
 history: !include configuration/logging/history.yaml
 logbook: !include configuration/logging/logbook.yaml
 logger: !include configuration/logging/logger.yaml
 recorder: !include configuration/logging/recorder.yaml
 
-#config files edited in frontend
+#>> Config files edited in frontend <<
 automation: !include automations.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
 
+#>> This offers the official frontend to control Home Assistant. <<
 frontend:
 #  themes: !include_dir_merge_named themes
 
-browser_mod:
-config:
-discovery:
-ffmpeg:
-lovelace_gen:
-map:
-mobile_app:
-person:
-stream:  
-sun:
-system_health:
-#webhook:
+#>> Dashboards and views configuration
+lovelace:
+  mode: storage
+  dashboards: !include configuration/dashboards/dashboards.yaml
 
+#>> Display panels in the frontend to configure and manage parts of Home Assistant. <<
+config:
+ 
+#>> Discover and automatically configure zeroconf/mDNS and UPnP devices on your network.<<
+discovery:
+
+#>> The ffmpeg integration allows other Home Assistant integrations to process video and audio streams. <<
+ffmpeg:
+
+#.. The stream integration provides a way to proxy live streams through Home Assistant. <<
+stream:  
+
+#>>  This offers a map on the frontend to display the location of tracked devices  <<
+map:
+
+#>> The Mobile App integration allows Home Assistant mobile apps to easily integrate with Home Assistant. <<
+mobile_app:
+
+#>> The person integration allows connecting device tracker entities to one or more person entities. <<  
+person:
+
+# >> The sun integration will use your current location to track if the sun is above or below the horizon. <<
+sun:
+
+# >> The System Health integration provides an API to offer information on the system and its components. <<  
+system_health:
+
+#>> Custom components <<  
+browser_mod:  
+lovelace_gen:
+
+#>> The manual alarm control panel platform enables you to create an alarm system in Home Assistant. <<
 alarm_control_panel:
   - platform: manual  
-
-input_boolean:
-  vacation_mode:
-#    initial: off
-
-webostv:
-  host: !secret webostv_ip
-  name: Woonkamer TV
-  turn_on_action:
-    service: persistent_notification.create
-    data:
-      message: "Turn on action"
-  customize:
-    sources:
-      - livetv
-      - decoder
-      - thuisbioscoop
-      - gameconsole
-
- 
-
-
-
-
