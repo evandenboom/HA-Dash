@@ -2,7 +2,7 @@
 
 google_assistant:
   project_id: hass-vandenboom-org
-  service_account: !include Google-Assistant-hass-vandenboom-org.json
+  service_account: !include ./json/Google-Assistant-hass-vandenboom-org.json
   exposed_domains:
     - switch
     - light

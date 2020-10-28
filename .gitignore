@@ -8,7 +8,7 @@
 !homekit-infused
 !homekit-infused/**/*
 !lovelace
-!lovelcace/**/*
+!lovelace/**/*
 !packages
 !packages/**/*
 !themes
@@ -26,3 +26,4 @@ ip_bans.yaml
 secrets.yaml
 known_devices.yaml
 ._*
+packages/json/**/*

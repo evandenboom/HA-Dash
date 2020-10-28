@@ -1,3 +1,5 @@
+# cameras
+
  - platform: ffmpeg
    name: Begane Grond
    input: !secret camera_begane_grond.input
