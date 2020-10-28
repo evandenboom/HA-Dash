@@ -1,21 +1,8 @@
 # sensors
-
-#      - platform: dsmr
-#        port: /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AI1X36IO-if00-port0
-#        dsmr_version: 5
-      
+    
 - platform: rflink
   automatic_add: true
   
-#Vandaag
-#      - platform: template
-#        sensors:
-#          vandaag:
-#            friendly_name: Vandaag
-#            entity_id: sensor.vandaag
-#            value_template: '>
-#             {{ now().strftime("%A %d %B %Y") }}'
-        
 - platform: template
   sensors:
     grid_power_consumption:

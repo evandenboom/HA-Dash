@@ -1,27 +1,27 @@
 # switches
 
-platform: rflink
-device_defaults:
-  signal_repetitions: 3
-devices:
-  newkaku_03438000_2:
-    name: Aquarium Woonkamer
-  newkaku_03582c00_2:
-    name: Aquarium Kim
-  newkaku_03582c00_3:
-    name: Aquarium Max
-  newkaku_013f0400_4:
-    name: Kerstdorp
-  newkaku_013f0400_5:
-    name: Hert keukenraam
-  newkaku_013f0400_3:
-    name: Guirlande
-  newkaku_013f0400_2:
-    name: Kerstboom
-  newkaku_00833c00_3:
-    name: Kerstboom buiten
-  newkaku_00833c00_2:
-    name: Lichtslang
-  newkaku_00833c00_4:
-    name: Kerstverlichting achtertuin
+- platform: rflink
+  device_defaults:
+    signal_repetitions: 3
+  devices:
+    newkaku_03438000_2:
+      name: Aquarium Woonkamer
+    newkaku_03582c00_2:
+      name: Aquarium Kim
+    newkaku_03582c00_3:
+      name: Aquarium Max
+    newkaku_013f0400_4:
+      name: Kerstdorp
+    newkaku_013f0400_5:
+      name: Hert keukenraam
+    newkaku_013f0400_3:
+      name: Guirlande
+    newkaku_013f0400_2:
+      name: Kerstboom
+    newkaku_00833c00_3:
+      name: Kerstboom buiten
+    newkaku_00833c00_2:
+      name: Lichtslang
+    newkaku_00833c00_4:
+      name: Kerstverlichting achtertuin
     
