@@ -9,7 +9,7 @@ homeassistant:
       trusted_networks: 
         !secret homeassistant.trusted_networks
   customize: !include customize.yaml
-  customize_glob: !include customize_glob.yaml
+  customize_glob: !include configuration/customize_glob/customize_glob.yaml
 
 
 http:
@@ -22,21 +22,23 @@ http:
 
 lovelace:
   mode: storage
-  dashboards: !include dashboards.yaml
+  dashboards: !include configuration/dashboards/dashboards.yaml
  
+
+camera: !include configuration/cameras/cameras.yaml
+group: !include_dir_merge_named configuration/groups/
+history: !include configuration/logging/history.yaml
+light: !include configuration/lights/lights.yaml
+logbook: !include configuration/logging/logbook.yaml
+logger: !include configuration/logging/logger.yaml
+recorder: !include configuration/logging/recorder.yaml
+sensor: !include configuration/sensors/sensors.yaml
+switch: !include configuration/switches/switches.yaml
+variable: !include configuration/variables/variables.yaml
 automation: !include automations.yaml
-camera: !include cameras.yaml
-group: !include groups.yaml
-history: !include history.yaml
-light: !include lights.yaml
-logbook: !include logbook.yaml
-logger: !include logger.yaml
-recorder: !include recorder.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
-sensor: !include sensors.yaml
-switch: !include switches.yaml
-variable: !include variables.yaml
+
 
 frontend:
 #  themes: !include_dir_merge_named themes

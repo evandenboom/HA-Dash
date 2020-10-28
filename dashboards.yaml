@@ -1,6 +1,0 @@
-lovelace-irrigation:
-  mode: yaml
-  title: Irrigation
-  icon: mdi:flower
-  show_in_sidebar: true
-  filename: irrigation.yaml

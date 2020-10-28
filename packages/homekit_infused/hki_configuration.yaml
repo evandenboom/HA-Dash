@@ -6,15 +6,6 @@ group:
 frontend:
   themes: !include_dir_merge_named ../../themes/
 
-lovelace:
-  dashboards:
-    homekit-infused:
-      mode: yaml
-      title: Homekit Infused
-      icon: mdi:home-assistant
-      show_in_sidebar: true
-      filename: homekit-infused.yaml
-
 alarm_control_panel:
   - platform: manual
     name: Home Alarm
