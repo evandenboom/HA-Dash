@@ -1,6 +1,0 @@
-tap_action:
-  action: toggle
-  haptics: light
-hold_action:
-  action: more-info
-  haptics: heavy
