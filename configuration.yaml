@@ -43,7 +43,6 @@ script: !include scripts.yaml
 
 #>> This offers the official frontend to control Home Assistant. <<
 frontend:
-#  themes: !include_dir_merge_named themes
 
 #>> Dashboards and views configuration
 lovelace:
@@ -59,7 +58,7 @@ discovery:
 #>> The ffmpeg integration allows other Home Assistant integrations to process video and audio streams. <<
 ffmpeg:
 
-#.. The stream integration provides a way to proxy live streams through Home Assistant. <<
+#>> The stream integration provides a way to proxy live streams through Home Assistant. <<
 stream:  
 
 #>>  This offers a map on the frontend to display the location of tracked devices  <<
