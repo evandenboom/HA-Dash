@@ -5,7 +5,6 @@
 !*.yaml
 !configuration
 !configuration/**/*
-!.gitignore
 !*.md
 !homekit-infused
 !homekit-infused/**/*
