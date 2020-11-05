@@ -10,3 +10,4 @@ google_assistant:
     - cover
     - binary_sensor
     - group
+    - climate
