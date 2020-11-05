@@ -2,14 +2,6 @@ rflink:
   port: /dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0
   wait_for_ack: true
 
-rfxtrx:
-  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A11Q52U5-if00-port0
-  devices:
-      071a000000000101: # RFY
-      071a000000000301: # RFY
-      071a000000000201: # RFY
-      071a000000000401: # RFY
-
 evohome_cc:
   serial_port: /dev/serial/by-id/usb-Texas_Instruments_TUSB3410_Boot_Device_TUSB3410-if00-port0
 
