@@ -461,3 +461,8 @@ include:
   - switch.sonoff_4ch_relay_2
   - switch.sonoff_4ch_relay_3
   - switch.sonoff_4ch_relay_4
+  - sensor.alectov1_0328_temp
+  - sensor.alectov1_004f_rain
+  - sensor.alecto_2b_01_temperature
+  - sensor.alecto_ws4500_2b_01_wind_average_speed
+  - sensor.alecto_4f_01_rain_rate
