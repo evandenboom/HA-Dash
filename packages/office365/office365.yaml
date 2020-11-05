@@ -1,0 +1,8 @@
+o365:
+  client_secret: !secret o365.client_secret
+  client_id: !secret o365.client_id
+  alt_auth_flow: True
+  email_sensor:
+    - name: inbox
+      max_items: 2
+      is_unread: True
