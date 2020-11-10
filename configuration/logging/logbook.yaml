@@ -8,3 +8,14 @@ include:
     - binary_sensor
     - climate
     - sensor
+exclude:
+  entities:
+    - sensor.buitentemperatuur_owm
+  entity_globs:
+    - switch.doorbell_*
+    - sensor.doorbell_*
+    - binary_sensor.doorbell_*
+    - switch.sonoff_*
+    - sensor.sonoff_*
+    - binary_sensor.sonoff_*
+

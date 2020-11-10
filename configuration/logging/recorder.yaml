@@ -151,9 +151,9 @@ include:
 #  - sensor.doorbell_esphome_version
 #  - sensor.doorbell_ip
 #  - sensor.doorbell_ssid
-  - sensor.doorbell_uptime
-  - sensor.doorbell_wifi_signal
-  - sensor.forecast_high_today
+#  - sensor.doorbell_uptime
+#  - sensor.doorbell_wifi_signal
+#  - sensor.forecast_high_today
   - sensor.gf134r_battery
   - sensor.gf134r_fuel_left
   - sensor.gf134r_mileage
@@ -162,7 +162,7 @@ include:
   - sensor.grid_power_production
 #  - sensor.hacs
   - sensor.humidity_10
-  - sensor.internet_time
+#  - sensor.internet_time
 #  - sensor.irrigation_cycle1_duration_in_seconds
 #  - sensor.irrigation_cycle1_start_time_in_seconds
 #  - sensor.irrigation_cycle1_zone1_actual_duration_in_seconds
