@@ -84,6 +84,7 @@ lovelace_gen:
 alarm_control_panel:
   - platform: manual  
 
+#>> InfluxDB integration (for use with Grafana, both externally hosted) <<  
 influxdb:
   host: !secret inlfuxdb.host
   port: !secret inlfuxdb.port
