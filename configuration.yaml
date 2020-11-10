@@ -83,3 +83,26 @@ lovelace_gen:
 #>> The manual alarm control panel platform enables you to create an alarm system in Home Assistant. <<
 alarm_control_panel:
   - platform: manual  
+
+influxdb:
+  host: !secret inlfuxdb.host
+  port: !secret inlfuxdb.port
+  database: !secret inlfuxdb.database
+  username: !secret inlfuxdb.username
+  password: !secret inlfuxdb.password
+  max_retries: 3
+  exclude:
+    domains:
+       - automation
+       - camera
+       - device_tracker
+       - group
+       - input_boolean
+       - input_select
+       - input_text
+       - person
+       - remote
+       - script
+       - zone
+       - calendar
+       - zwave
