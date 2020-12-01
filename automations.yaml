@@ -10,14 +10,13 @@
   - service: variable.set_variable
     data:
       variable: last_motion_begane_grond
-      attributes_template: "{\n \"history_1\":\"{{states('variable.last_motion_begane_grond')}}\"\
-        ,\n \"history_2\":\"{{state_attr('variable.last_motion_begane_grond','history_1')}}\"\
-        ,\n \"history_3\":\"{{state_attr('variable.last_motion_begane_grond','history_2')}}\"\
-        ,\n \"history_4\":\"{{state_attr('variable.last_motion_begane_grond','history_3')}}\"\
-        \n}\n"
-      value: "{{trigger.to_state.name|replace(' sensor motion','')}}: {{as_timestamp(trigger.from_state.last_changed)|timestamp_custom('%X')}}\
-        \ \n"
-  mode: single
+      attributes:
+        history_1: '{{states(''variable.last_motion_begane_grond'')}}'
+        history_2: '{{state_attr(''variable.last_motion_begane_grond'',''history_1'')}}'
+        history_3: '{{state_attr(''variable.last_motion_begane_grond'',''history_2'')}}'
+        history_4: '{{state_attr(''variable.last_motion_begane_grond'',''history_3'')}}'
+      value: '{{trigger.to_state.name|replace('' sensor motion'','''')}}: {{as_timestamp(trigger.to_state.last_changed)|timestamp_custom(''%X'')}}'
+  mode: queued
 - id: 76c830dbba6c4b3f9fa79c9b859c3033
   alias: Update Last Motion 1e verdieping
   trigger:
@@ -27,13 +26,12 @@
   - service: variable.set_variable
     data:
       variable: last_motion_1e_verdieping
-      attributes_template: "{\n \"history_1\":\"{{states('variable.last_motion_1e_verdieping')}}\"\
-        ,\n \"history_2\":\"{{state_attr('variable.last_motion_1e_verdieping','history_1')}}\"\
-        ,\n \"history_3\":\"{{state_attr('variable.last_motion_1e_verdieping','history_2')}}\"\
-        ,\n \"history_4\":\"{{state_attr('variable.last_motion_1e_verdieping','history_3')}}\"\
-        \n}\n"
-      value: "{{trigger.to_state.name|replace(' sensor motion','')}}: {{as_timestamp(trigger.from_state.last_changed)|timestamp_custom('%X')}}\
-        \  \n"
+      attributes:
+        history_1: '{{states(''variable.last_motion_1e_verdieping'')}}'
+        history_2: '{{state_attr(''variable.last_motion_1e_verdieping'',''history_1'')}}'
+        history_3: '{{state_attr(''variable.last_motion_1e_verdieping'',''history_2'')}}'
+        history_4: '{{state_attr(''variable.last_motion_1e_verdieping'',''history_3'')}}'
+      value: '{{trigger.to_state.name|replace('' sensor motion'','''')}}: {{as_timestamp(trigger.to_state.last_changed)|timestamp_custom(''%X'')}}'
   mode: queued
   max: 10
 - id: letsencrypt-renewal
@@ -54,10 +52,10 @@
   action:
   - delay: '5'
   - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11
+      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19
     service: switch.turn_off
   - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12
+      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_20
     service: switch.turn_off
   mode: single
 - id: '1548534363488'
@@ -68,10 +66,10 @@
   condition: []
   action:
   - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11
+      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19
     service: switch.turn_on
   - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12
+      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_20
     service: switch.turn_on
   mode: single
 - id: '1548619182701'
@@ -172,9 +170,8 @@
     to: 'on'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_zmnhbdx_flush_2_relays_switch_9
-    service: switch.turn_on
+  - service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_9
   mode: single
 - id: '1548841236825'
   alias: Koof Keuken switch uit link
@@ -184,9 +181,8 @@
     to: 'off'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_zmnhbdx_flush_2_relays_switch_9
-    service: switch.turn_off
+  - service: switch.turn_off
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_9
   mode: single
 - id: '1548840903847'
   alias: Koof Woonkamer switch aan link
@@ -196,9 +192,9 @@
     to: 'on'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    service: switch.turn_on
+  - service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
+    data: {}
   mode: single
 - id: '1548840968352'
   alias: Koof Woonkamer switch uit link
@@ -208,9 +204,9 @@
     to: 'off'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    service: switch.turn_off
+  - service: switch.turn_off
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
+    data: {}
   mode: single
 - id: '1548929804553'
   alias: Lamp Woonkamer switch link uit
@@ -220,9 +216,9 @@
     to: 'off'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
-    service: switch.turn_off
+  - service: switch.turn_off
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+    data: {}
   mode: single
 - id: '1548933712936'
   alias: Lamp Woonkamer switch link aan
@@ -232,9 +228,9 @@
     to: 'on'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
-    service: switch.turn_on
+  - service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+    data: {}
   mode: single
 - id: '1551085013631'
   alias: Lamp Keuken switch link aan
@@ -244,9 +240,9 @@
     to: 'on'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
+  - data: {}
     service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
   mode: single
 - id: '1551085076824'
   alias: Lamp Keuken switch link uit
@@ -256,9 +252,9 @@
     to: 'off'
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
-    service: switch.turn_off
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
   mode: single
 - id: '1551261026482'
   alias: Koof keuken milight aan link
@@ -272,9 +268,11 @@
     entity_id: light.koof_keuken
     state: 'off'
   action:
-  - data:
-      entity_id: light.koof_keuken
-    service: light.turn_on
+  - service: light.turn_on
+    entity_id: light.koof_keuken
+    data:
+      brightness: 160
+      color_temp: 370
   mode: single
 - id: '1551261301437'
   alias: Koof Keuken milight uit link
@@ -287,9 +285,9 @@
     entity_id: light.koof_keuken
     state: 'on'
   action:
-  - data:
-      entity_id: light.koof_keuken
+  - data: {}
     service: light.turn_off
+    entity_id: light.koof_keuken
   mode: single
 - id: c4d21c9aa2f14497bc27f94892f797c5
   alias: Koof Woonkamer milight aan link
@@ -303,10 +301,13 @@
     entity_id: light.koof_woonkamer
     state: 'off'
   action:
-  - data:
-      entity_id: light.koof_woonkamer
-    service: light.turn_on
-  mode: single
+  - service: light.turn_on
+    entity_id: light.koof_woonkamer
+    data:
+      brightness: 51
+      color_temp: 370
+  mode: queued
+  max: 10
 - id: f8e6c5fe255c468782f7c29dc040ad7b
   alias: Koof Woonkamer milight uit link
   trigger:
@@ -318,9 +319,9 @@
     entity_id: light.koof_woonkamer
     state: 'on'
   action:
-  - data:
-      entity_id: light.koof_woonkamer
-    service: light.turn_off
+  - service: light.turn_off
+    data: {}
+    entity_id: light.koof_woonkamer
   mode: single
 - id: 5c83ba885a0142438d982427623598a6
   alias: Lamp keuken milight aan link
@@ -334,9 +335,11 @@
     entity_id: light.lamp_keuken
     state: 'off'
   action:
-  - data:
-      entity_id: light.lamp_keuken
-    service: light.turn_on
+  - service: light.turn_on
+    entity_id: light.lamp_keuken
+    data:
+      brightness: 160
+      color_temp: 370
   mode: single
 - id: 914261342d8a4923855b3eb79903bc95
   alias: Lamp keuken milight uit link
@@ -349,17 +352,17 @@
     entity_id: light.lamp_keuken
     state: 'on'
   action:
-  - data:
-      entity_id: light.lamp_keuken
-    service: light.turn_off
+  - service: light.turn_off
+    entity_id: light.lamp_keuken
+    data: {}
   mode: single
 - id: 50f331d4c40b4620bdab8e9eadf65a0a
   alias: Lamp woonkamer milight aan link
   trigger:
   - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
-    from: 'off'
     platform: state
     to: 'on'
+    from: 'off'
   condition:
   - condition: state
     entity_id: light.lamp_woonkamer
@@ -368,9 +371,10 @@
   - data:
       brightness: 160
       color_temp: 370
-      entity_id: light.lamp_woonkamer
     service: light.turn_on
-  mode: single
+    entity_id: light.lamp_woonkamer
+  mode: queued
+  max: 10
 - id: e49ff413366b46e58c9da642b46edc10
   alias: Lamp woonkamer milight uit link
   trigger:
@@ -382,9 +386,9 @@
     entity_id: light.lamp_woonkamer
     state: 'on'
   action:
-  - data:
-      entity_id: light.lamp_woonkamer
+  - data: {}
     service: light.turn_off
+    entity_id: light.lamp_woonkamer
   mode: single
 - id: '1550740987204'
   alias: Playstation uit
@@ -407,9 +411,9 @@
     entity_id: input_boolean.vacation_mode
     state: 'on'
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    service: switch.turn_on
+  - service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
+    data: {}
   mode: single
 - id: '1553768523869'
   alias: Vacation Mode - Koof Woonkamer UIT
@@ -421,9 +425,9 @@
     entity_id: input_boolean.vacation_mode
     state: 'on'
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    service: switch.turn_off
+  - service: switch.turn_off
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
+    data: {}
   mode: single
 - id: '1553805131950'
   alias: Vacation Mode - Eettafel Lamp AAN
@@ -439,9 +443,9 @@
     before: '19:30'
     condition: time
   action:
-  - data:
-      entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
-    service: switch.turn_on
+  - service: light.turn_on
+    entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
+    data: {}
   mode: single
 - id: '1553805245494'
   alias: Vacation Mode - Eettafel Lamp UIT
@@ -453,9 +457,9 @@
     entity_id: input_boolean.vacation_mode
     state: 'on'
   action:
-  - data:
-      entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
-    service: light.turn_off
+  - service: light.turn_off
+    entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
+    data: {}
   mode: single
 - id: '1553805538832'
   alias: Vacation Mode - Plafondlamp Woonkamer AAN
@@ -468,9 +472,9 @@
     entity_id: input_boolean.vacation_mode
     state: 'on'
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
-    service: switch.turn_on
+  - service: switch.turn_on
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+    data: {}
   mode: single
 - id: '1553805618548'
   alias: Vacation mode - Plafondlamp Woonkamer UIT
@@ -482,9 +486,9 @@
     entity_id: input_boolean.vacation_mode
     state: 'on'
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+  - data: {}
     service: switch.turn_off
+    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
   mode: single
 - id: '1562753703626'
   alias: Ventilatie Hoog Aan - Laag Uit
