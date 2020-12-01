@@ -107,3 +107,5 @@ influxdb:
        - zone
        - calendar
        - zwave
+    entities:
+       - sensor.01_108436_fault_log
