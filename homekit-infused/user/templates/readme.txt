@@ -1,1 +1,0 @@
-You can save your custom templates in this folder (make sure you reference to the right path)
