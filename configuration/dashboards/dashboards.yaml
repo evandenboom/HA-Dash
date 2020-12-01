@@ -1,13 +1,13 @@
-lovelace-irrigation:
-  mode: yaml
-  title: Irrigation
-  icon: mdi:flower
-  show_in_sidebar: true
-  filename: configuration/dashboards/views/irrigation.yaml
+#lovelace-irrigation:
+#  mode: yaml
+#  title: Irrigation
+#  icon: mdi:flower
+#  show_in_sidebar: true
+#  filename: configuration/dashboards/views/irrigation.yaml
 
-homekit-infused:
-  mode: yaml
-  title: Homekit Infused
-  icon: mdi:home-assistant
-  show_in_sidebar: true
-  filename: configuration/dashboards/views/homekit-infused.yaml
+#homekit-infused:
+#  mode: yaml
+#  title: Homekit Infused
+#  icon: mdi:home-assistant
+#  show_in_sidebar: true
+#  filename: configuration/dashboards/views/homekit-infused.yaml
