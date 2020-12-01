@@ -466,3 +466,16 @@ include:
   - sensor.alecto_2b_01_temperature
   - sensor.alecto_ws4500_2b_01_wind_average_speed
   - sensor.alecto_4f_01_rain_rate
+  - sensor.temp_woonk_vloerv
+  - climate.controller
+  - switch.sonoff_mini_relay
+  - switch.sonoff_mini_relay_2
+  - switch.sonoff_mini_relay_3
+  - binary_sensor.sonoff_mini_button
+  - binary_sensor.sonoff_mini_button_2
+  - binary_sensor.sonoff_mini_button_3
+  - binary_sensor.sonoff_mini_switch
+  - binary_sensor.sonoff_mini_switch_2
+  - binary_sensor.sonoff_mini_switch_3
+  - binary_sensor.presence_14
+  - binary_sensor.presence_16
