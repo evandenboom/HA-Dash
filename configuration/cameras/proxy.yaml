@@ -1,23 +1,36 @@
 - platform: proxy
-  entity_id: camera.achtertuin
+  entity_id: camera.achtertuin_schuifpui
   name: Achtertuin ProxyCam
   max_stream_width: 360
   max_image_width: 720
 
 - platform: proxy
-  entity_id: camera.begane_grond
+  entity_id: camera.begane_grond_pt
   name: Begane Grond ProxyCam
   max_stream_width: 360
   max_image_width: 720
 
 - platform: proxy
-  entity_id: camera.begane_grond_2
+  entity_id: camera.woonkamer1
   name: Begane Grond 2 ProxyCam
   max_stream_width: 360
   max_image_width: 720
 
 - platform: proxy
-  entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  entity_id: camera.voordeur
   name: Voordeur ProxyCam
   max_stream_width: 360
   max_image_width: 720
+
+- platform: proxy
+  entity_id: camera.straatijde
+  name: Straatzijde ProxyCam
+  max_stream_width: 360
+  max_image_width: 720
+
+- platform: proxy
+  entity_id: camera.achtertuin_schuur
+  name: Achteruin Schuur ProxyCam
+  max_stream_width: 360
+  max_image_width: 720
+
