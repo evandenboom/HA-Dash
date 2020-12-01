@@ -1,15 +1,24 @@
 # cameras
 
- - platform: ffmpeg
-   name: Begane Grond
-   input: !secret camera_begane_grond.input
+#- platform: ffmpeg
+#  name: Begane Grond
+#  input: !secret camera_begane_grond.input
    
- - platform: ffmpeg
-   name: Begane Grond 2
-   input: !secret camera_begane_grond2.input
+- platform: ffmpeg
+  name: Begane Grond 2
+  input: !secret camera_begane_grond2.input
  
- - platform: ffmpeg
-   name: Achtertuin
-   input: !secret camera_achtertuin.input
+- platform: ffmpeg
+  name: Achtertuin
+  input: !secret camera_achtertuin.input
 
+- platform: ffmpeg
+  name: Straatzijde
+  input: !secret camera_straatzijde.input
+
+#- platform: synology
+#  url: https://treecentral.vandenboom.org:5001
+#  username: admin
+#  password: 3Vdb8458
+#  verify_ssl: false
 
