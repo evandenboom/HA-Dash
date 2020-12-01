@@ -19,6 +19,13 @@
       friendly_name: "Irrigation weather outlook"
       value_template: "{{ state_attr('sensor.current_weather_owm', 'temp') }}"
 
+- platform: template
+  sensors:
+    temp_woonk_vloerv:
+      friendly_name: "Woonk. Vloerv."
+      unit_of_measurement: '°C'
+      value_template: "{{ state_attr('climate.controller', 'current_temperature') }}"     
+
 - platform: time_date
   display_options:
     - 'time'
