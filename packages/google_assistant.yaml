@@ -1,13 +1,11 @@
 #google_assistant
 
 google_assistant:
-  project_id: hass-vandenboom-org
-  service_account: !include ./json/Google-Assistant-hass-vandenboom-org.json
+  project_id: hass-vandenboom-orghass-vandenboom-org-f6507
+  service_account: !include ./json/Service_Account.json
+  expose_by_default: true
   exposed_domains:
     - switch
     - light
-    - sensor
-    - cover
     - binary_sensor
-    - group
     - climate

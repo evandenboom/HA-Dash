@@ -3,4 +3,5 @@
   assumed_state: false
 "light.*":
   icon: mdi:lightbulb
-  assumed_state: false   
+  assumed_state: false
+

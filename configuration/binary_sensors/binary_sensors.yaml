@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    humidifier_water_lacks:
+      value_template: '{{ state_attr("humidifier.humidifier", "water_lacks")}}'
+      friendly_name: Humidifier Out of Water

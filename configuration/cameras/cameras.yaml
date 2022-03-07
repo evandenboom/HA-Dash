@@ -1,8 +1,8 @@
 # cameras
 
-#- platform: ffmpeg
-#  name: Begane Grond
-#  input: !secret camera_begane_grond.input
+- platform: ffmpeg
+  name: Begane Grond
+  input: !secret camera_begane_grond.input
    
 - platform: ffmpeg
   name: Begane Grond 2
@@ -15,6 +15,11 @@
 - platform: ffmpeg
   name: Straatzijde
   input: !secret camera_straatzijde.input
+
+- platform: mjpeg
+  name: 3D-Printer
+  still_image_url: http://10.1.1.148/webcam/?action=snapshot
+  mjpeg_url: http://10.1.1.148/webcam/?action=stream
 
 #- platform: synology
 #  url: https://treecentral.vandenboom.org:5001

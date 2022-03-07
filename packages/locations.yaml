@@ -7,6 +7,12 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: true
+      
+  - platform: traccar
+    host: treecentral.vandenboom.org
+    port: 8082
+    username: admin
+    password: admin
 
 zone:      
    - name: !secret zone.loc1.name

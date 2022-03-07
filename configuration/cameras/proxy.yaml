@@ -34,3 +34,24 @@
   max_stream_width: 360
   max_image_width: 720
 
+- platform: proxy
+  entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  name: License1
+  mode: crop
+  max_image_width: 240
+  max_image_height: 160
+  max_stream_width: 240
+  max_stream_height: 160
+  image_left: 150
+  image_top: 360
+
+- platform: proxy
+  entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  name: License2
+  mode: crop
+  max_image_width: 240
+  max_image_height: 160
+  max_stream_width: 240
+  max_stream_height: 160
+  image_left: 350
+  image_top: 260  

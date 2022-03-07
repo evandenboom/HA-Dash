@@ -6,7 +6,8 @@
 #  scan_interval: 180
 
 evohome_cc:
-  scan_interval: 60
+#  scan_interval: 60
   packet_log: /config/packets.log
+  restore_cache: true
   schema:
     controller: 01:108436

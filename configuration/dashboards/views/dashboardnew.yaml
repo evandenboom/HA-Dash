@@ -1,0 +1,9 @@
+# dashboardnew
+homeassistant:
+  packages: !include_dir_named ./../../../include
+  
+button_card_templates: !include button_card_templates.yaml
+
+views:
+  - !include ./../../../lovelace/dashboardnew.yaml
+  

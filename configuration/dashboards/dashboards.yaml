@@ -1,4 +1,11 @@
-#lovelace-irrigation:
+dashboard-new:
+  mode: yaml
+  title: Dashboard New
+  icon: mdi:flower
+  show_in_sidebar: true
+  filename: configuration/dashboards/views/dashboardnew.yaml
+
+# lovelace-irrigation:
 #  mode: yaml
 #  title: Irrigation
 #  icon: mdi:flower
@@ -11,3 +18,17 @@
 #  icon: mdi:home-assistant
 #  show_in_sidebar: true
 #  filename: configuration/dashboards/views/homekit-infused.yaml
+
+# 3d-printer:
+#  mode: yaml
+#  title: 3D-Printer
+#  icon: mdi:home-assistant
+#  show_in_sidebar: true
+#  filename: configuration/dashboards/views/3dprinter.yaml
+
+# 3d-printer:
+#  mode: yaml
+#  title: 3D-Printer
+#  icon: mdi:home-assistant
+#  show_in_sidebar: true
+#  filename: configuration/dashboards/views/3dprinter.yaml

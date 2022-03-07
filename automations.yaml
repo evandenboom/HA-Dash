@@ -2,10 +2,10 @@
   alias: Update Last Motion Begane Grond
   trigger:
   - platform: state
-    entity_id: binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_2,
-      binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor, binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_3,
-      binary_sensor.motion_sensor, binary_sensor.openclose_7
     to: 'on'
+    entity_id: binary_sensor.pir_gang_home_security_motion_detection, binary_sensor.pir_woonkamer_home_security_motion_detection,
+      binary_sensor.pir_fietsenschuur_home_security_motion_detection, binary_sensor.motion_sensor_woonkamer,
+      binary_sensor.window_door_sensor_2
   action:
   - service: variable.set_variable
     data:
@@ -17,11 +17,13 @@
         history_4: '{{state_attr(''variable.last_motion_begane_grond'',''history_3'')}}'
       value: '{{trigger.to_state.name|replace('' sensor motion'','''')}}: {{as_timestamp(trigger.to_state.last_changed)|timestamp_custom(''%X'')}}'
   mode: queued
+  max: 10
 - id: 76c830dbba6c4b3f9fa79c9b859c3033
   alias: Update Last Motion 1e verdieping
   trigger:
   - platform: state
-    entity_id: binary_sensor.presence_5, binary_sensor.openclose_6
+    entity_id: binary_sensor.motion_landing_1st_floor, binary_sensor.motion_1st_stairway,
+      binary_sensor.window_door_sensor
   action:
   - service: variable.set_variable
     data:
@@ -46,121 +48,126 @@
 - id: '1548533715834'
   alias: Tuinverlichting uit
   trigger:
-  - at: '22:45'
+  - at: '22:00'
     platform: time
   condition: []
   action:
-  - delay: '5'
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19
-    service: switch.turn_off
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_20
-    service: switch.turn_off
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.tuinverlichting_2_2
   mode: single
 - id: '1548534363488'
   alias: Tuinverlichting aan
   trigger:
   - event: sunset
     platform: sun
+    offset: +00:30:00
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19
+  - data: {}
     service: switch.turn_on
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_20
-    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.tuinverlichting_2_2
   mode: single
 - id: '1548619182701'
   alias: Aquarium Kim aan
   trigger:
-  - at: 06:45
+  - at: 07:00
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_kim
+  - data: {}
     service: switch.turn_on
+    target:
+      entity_id: switch.aquarium_kim
 - id: '1548619359495'
   alias: Aquarium Max aan
   trigger:
-  - at: 08:45
+  - at: 09:00
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_max
+  - data: {}
     service: switch.turn_on
+    target:
+      entity_id: switch.aquarium_max
 - id: '1548619427656'
   alias: Aquarium Kim uit
   trigger:
-  - at: '20:45'
+  - at: '20:00'
     platform: time
-  - at: '20:51'
+  - at: '20:02'
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_kim
+  - data: {}
     service: switch.turn_off
+    target:
+      entity_id: switch.aquarium_kim
 - id: '1548619471207'
   alias: Aquarium Max uit
   trigger:
-  - at: '20:44'
+  - at: '20:04'
     platform: time
-  - at: '20:49'
+  - at: '20:09'
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_max
+  - data: {}
     service: switch.turn_off
+    target:
+      entity_id: switch.aquarium_max
 - id: '1548619705065'
   alias: Aquarium Woonkamer aan
   trigger:
-  - at: '7:15'
+  - at: 07:15
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_woonkamer
+  - data: {}
     service: switch.turn_on
+    target:
+      entity_id: switch.aquarium_woonkamer
 - id: '1548619750487'
   alias: Aquarium Woonkamer uit
   trigger:
-  - at: '22:30'
+  - at: '22:00'
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.aquarium_woonkamer
+  - data: {}
     service: switch.turn_off
+    target:
+      entity_id: switch.aquarium_woonkamer
 - id: '1548623799915'
   alias: Ventilatie Badkamer aan
   trigger:
-  - above: '68'
+  - above: '70'
     below: '100'
-    entity_id: sensor.humidity_10
+    entity_id: sensor.multi_sensor_badkamer_2
     platform: numeric_state
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_7
-    service: switch.turn_on
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.ventilatie_6
   mode: single
 - id: '1548927878492'
   alias: Ventilatie Badkamer uit
   trigger:
   - above: '0'
-    below: '67'
-    entity_id: sensor.humidity_10
+    below: '69'
+    entity_id: sensor.multi_sensor_badkamer_2
     platform: numeric_state
   condition: []
   action:
-  - data:
-      entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_7
-    service: switch.turn_off
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.ventilatie_6
   mode: single
 - id: '1548767868417'
   alias: Koof Keuken switch aan link
@@ -171,7 +178,9 @@
   condition: []
   action:
   - service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_9
+    data: {}
+    target:
+      entity_id: switch.koof_keuken_2
   mode: single
 - id: '1548841236825'
   alias: Koof Keuken switch uit link
@@ -182,7 +191,9 @@
   condition: []
   action:
   - service: switch.turn_off
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_9
+    data: {}
+    target:
+      entity_id: switch.koof_keuken_2
   mode: single
 - id: '1548840903847'
   alias: Koof Woonkamer switch aan link
@@ -193,8 +204,9 @@
   condition: []
   action:
   - service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
     data: {}
+    target:
+      entity_id: switch.koof_woonkamer_2
   mode: single
 - id: '1548840968352'
   alias: Koof Woonkamer switch uit link
@@ -205,11 +217,12 @@
   condition: []
   action:
   - service: switch.turn_off
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
     data: {}
+    target:
+      entity_id: switch.koof_woonkamer_2
   mode: single
 - id: '1548929804553'
-  alias: Lamp Woonkamer switch link uit
+  alias: Plafondlamp Woonkamer switch link uit
   trigger:
   - entity_id: light.lamp_woonkamer
     platform: state
@@ -217,11 +230,12 @@
   condition: []
   action:
   - service: switch.turn_off
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
     data: {}
+    target:
+      entity_id: switch.plafondlamp_woonkamer_4
   mode: single
 - id: '1548933712936'
-  alias: Lamp Woonkamer switch link aan
+  alias: Plafondlamp Woonkamer switch link aan
   trigger:
   - entity_id: light.lamp_woonkamer
     platform: state
@@ -229,11 +243,12 @@
   condition: []
   action:
   - service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
     data: {}
+    target:
+      entity_id: switch.plafondlamp_woonkamer_4
   mode: single
 - id: '1551085013631'
-  alias: Lamp Keuken switch link aan
+  alias: Plafondlamp Keuken switch link aan
   trigger:
   - entity_id: light.lamp_keuken
     platform: state
@@ -242,10 +257,11 @@
   action:
   - data: {}
     service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
+    target:
+      entity_id: switch.plafondlamp_keuken_2
   mode: single
 - id: '1551085076824'
-  alias: Lamp Keuken switch link uit
+  alias: Plafondlamp Keuken switch link uit
   trigger:
   - entity_id: light.lamp_keuken
     platform: state
@@ -254,52 +270,44 @@
   action:
   - service: switch.turn_off
     data: {}
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
+    target:
+      entity_id: switch.plafondlamp_keuken_2
   mode: single
 - id: '1551261026482'
   alias: Koof keuken milight aan link
   trigger:
-  - entity_id: switch.qubino_zmnhbdx_flush_2_relays_switch_9
-    from: 'off'
+  - entity_id: switch.koof_keuken_2
     platform: state
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.koof_keuken
-    state: 'off'
+  condition: []
   action:
   - service: light.turn_on
-    entity_id: light.koof_keuken
     data:
       brightness: 160
       color_temp: 370
+    target:
+      entity_id: light.koof_keuken
   mode: single
 - id: '1551261301437'
   alias: Koof Keuken milight uit link
   trigger:
-  - entity_id: switch.qubino_zmnhbdx_flush_2_relays_switch_9
+  - entity_id: switch.koof_keuken_2
     platform: state
     to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.koof_keuken
-    state: 'on'
+  condition: []
   action:
   - data: {}
     service: light.turn_off
-    entity_id: light.koof_keuken
+    target:
+      entity_id: light.koof_keuken
   mode: single
 - id: c4d21c9aa2f14497bc27f94892f797c5
   alias: Koof Woonkamer milight aan link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    from: 'off'
-    platform: state
+  - platform: state
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.koof_woonkamer
-    state: 'off'
+    entity_id: switch.koof_woonkamer_2
+  condition: []
   action:
   - service: light.turn_on
     entity_id: light.koof_woonkamer
@@ -311,29 +319,22 @@
 - id: f8e6c5fe255c468782f7c29dc040ad7b
   alias: Koof Woonkamer milight uit link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-    platform: state
+  - platform: state
     to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.koof_woonkamer
-    state: 'on'
+    entity_id: switch.koof_woonkamer_2
+  condition: []
   action:
   - service: light.turn_off
     data: {}
     entity_id: light.koof_woonkamer
   mode: single
 - id: 5c83ba885a0142438d982427623598a6
-  alias: Lamp keuken milight aan link
+  alias: Plafondlamp keuken milight aan link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
-    from: 'off'
+  - entity_id: switch.plafondlamp_keuken_2
     platform: state
     to: 'on'
-  condition:
-  - condition: state
-    entity_id: light.lamp_keuken
-    state: 'off'
+  condition: []
   action:
   - service: light.turn_on
     entity_id: light.lamp_keuken
@@ -342,31 +343,24 @@
       color_temp: 370
   mode: single
 - id: 914261342d8a4923855b3eb79903bc95
-  alias: Lamp keuken milight uit link
+  alias: Plafondlamp keuken milight uit link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch
+  - entity_id: switch.plafondlamp_keuken_2
     platform: state
     to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.lamp_keuken
-    state: 'on'
+  condition: []
   action:
   - service: light.turn_off
     entity_id: light.lamp_keuken
     data: {}
   mode: single
 - id: 50f331d4c40b4620bdab8e9eadf65a0a
-  alias: Lamp woonkamer milight aan link
+  alias: Plafondlamp woonkamer milight aan link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+  - entity_id: switch.plafondlamp_woonkamer_4
     platform: state
     to: 'on'
-    from: 'off'
-  condition:
-  - condition: state
-    entity_id: light.lamp_woonkamer
-    state: 'off'
+  condition: []
   action:
   - data:
       brightness: 160
@@ -376,15 +370,12 @@
   mode: queued
   max: 10
 - id: e49ff413366b46e58c9da642b46edc10
-  alias: Lamp woonkamer milight uit link
+  alias: Plafondlamp woonkamer milight uit link
   trigger:
-  - entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+  - entity_id: switch.plafondlamp_woonkamer_4
     platform: state
     to: 'off'
-  condition:
-  - condition: state
-    entity_id: light.lamp_woonkamer
-    state: 'on'
+  condition: []
   action:
   - data: {}
     service: light.turn_off
@@ -397,14 +388,16 @@
     platform: time
   condition: []
   action:
-  - data:
-      entity_id: switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2
+  - data: {}
     service: switch.turn_off
+    target:
+      entity_id: switch.playstation_2
+  mode: single
 - id: '1553768406372'
   alias: Vacation Mode - Koof Woonkamer AAN
   trigger:
   - event: sunset
-    offset: -00:35:00
+    offset: -00:05:00
     platform: sun
   condition:
   - condition: state
@@ -412,13 +405,14 @@
     state: 'on'
   action:
   - service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
     data: {}
+    target:
+      entity_id: switch.koof_woonkamer_2
   mode: single
 - id: '1553768523869'
   alias: Vacation Mode - Koof Woonkamer UIT
   trigger:
-  - at: '23:10'
+  - at: '22:30'
     platform: time
   condition:
   - condition: state
@@ -426,14 +420,15 @@
     state: 'on'
   action:
   - service: switch.turn_off
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
     data: {}
+    target:
+      entity_id: switch.koof_woonkamer_2
   mode: single
 - id: '1553805131950'
   alias: Vacation Mode - Eettafel Lamp AAN
   trigger:
   - event: sunset
-    offset: -00:20:00
+    offset: -00:10:00
     platform: sun
   condition:
   - condition: state
@@ -444,13 +439,14 @@
     condition: time
   action:
   - service: light.turn_on
-    entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
     data: {}
+    target:
+      entity_id: light.hanglamp_eettafel
   mode: single
 - id: '1553805245494'
   alias: Vacation Mode - Eettafel Lamp UIT
   trigger:
-  - at: '19:30'
+  - at: '19:30:00'
     platform: time
   condition:
   - condition: state
@@ -458,14 +454,15 @@
     state: 'on'
   action:
   - service: light.turn_off
-    entity_id: light.qubino_goap_zmnhdd1_flush_dimmer_level_2
     data: {}
+    target:
+      entity_id: light.hanglamp_eettafel
   mode: single
 - id: '1553805538832'
   alias: Vacation Mode - Plafondlamp Woonkamer AAN
   trigger:
   - event: sunset
-    offset: -00:30:00
+    offset: -00:10:00
     platform: sun
   condition:
   - condition: state
@@ -473,13 +470,14 @@
     state: 'on'
   action:
   - service: switch.turn_on
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
     data: {}
+    target:
+      entity_id: switch.plafondlamp_woonkamer_4
   mode: single
 - id: '1553805618548'
   alias: Vacation mode - Plafondlamp Woonkamer UIT
   trigger:
-  - at: '23:20'
+  - at: '23:10'
     platform: time
   condition:
   - condition: state
@@ -488,7 +486,8 @@
   action:
   - data: {}
     service: switch.turn_off
-    entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
+    target:
+      entity_id: switch.plafondlamp_woonkamer_4
   mode: single
 - id: '1562753703626'
   alias: Ventilatie Hoog Aan - Laag Uit
@@ -521,20 +520,6 @@
   - data:
       entity_id: switch.qubino_goap_zmnhbdx_flush_2_relays_switch_17
     service: switch.turn_off
-- id: '1576501641016'
-  alias: Motion Alert
-  description: ''
-  trigger:
-  - entity_id: binary_sensor.0x00158d0002b9335d_occupancy
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      message: Beweging overloop!
-      title: Motion detected
-    service: notify.mobile_app_sm_g965f
 - id: '1601305505508'
   alias: Camera voordeur bij beweging
   description: ''
@@ -551,4 +536,389 @@
       deviceID:
       - d8abb9d7-94b67733
       - 7cfaa28d-01e89456
+  mode: single
+- id: '1606816923584'
+  alias: Update Last Motion 2e verdieping
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_2nd_stairway, binary_sensor.window_door_sensor_3
+  condition: []
+  action:
+  - service: variable.set_variable
+    data:
+      variable: last_motion_2e_verdieping
+      attributes:
+        history_1: '{{states(''variable.last_motion_2e_verdieping'')}}'
+        history_2: '{{state_attr(''variable.last_motion_2e_verdieping'',''history_1'')}}'
+        history_3: '{{state_attr(''variable.last_motion_2e_verdieping'',''history_2'')}}'
+        history_4: '{{state_attr(''variable.last_motion_2e_verdieping'',''history_3'')}}'
+      value: '{{trigger.to_state.name|replace('' sensor motion'','''')}}: {{as_timestamp(trigger.to_state.last_changed)|timestamp_custom(''%X'')}}'
+  mode: queued
+  max: 10
+- id: '1575802882265'
+  alias: Kerstverlichting binnen aan
+  description: ''
+  trigger:
+  - at: '16:00:00'
+    platform: time
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.remotehaskerstdorp
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.remotehaskerstboom
+  - data: {}
+    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.remotehasguirlande
+  - data: {}
+    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.remotehashert_keukenraam
+  mode: single
+- id: '1575803218143'
+  alias: Kerstverlichting binnen uit
+  description: ''
+  trigger:
+  - at: '22:30:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_off
+    target:
+      entity_id:
+      - switch.remotehaskerstdorp
+  - data: {}
+    service: switch.turn_off
+    target:
+      entity_id:
+      - switch.remotehaskerstboom
+  - data: {}
+    service: switch.turn_off
+    target:
+      entity_id:
+      - switch.remotehasguirlande
+  - data: {}
+    service: switch.turn_off
+    target:
+      entity_id:
+      - switch.remotehashert_keukenraam
+  mode: single
+- id: '1575803346442'
+  alias: Kerstverlichting buiten aan
+  description: ''
+  trigger:
+  - event: sunset
+    offset: '-30'
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.remotehaskerstverlichting_pergola
+  - data: {}
+    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.remotehaskerstverlichting_lichtslang
+  - data: {}
+    service: switch.turn_on
+    target:
+      entity_id:
+      - switch.remotehaskerstboom_buiten
+  mode: single
+- id: '1575803604929'
+  alias: Kerstlverlichting Lichtslang buiten uit
+  description: ''
+  trigger:
+  - at: '22:45:00'
+    platform: time
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id:
+      - switch.remotehaskerstverlichting_lichtslang
+  mode: single
+- id: '1575803723620'
+  alias: Kerstverlichting buiten uit
+  description: ''
+  trigger:
+  - at: '22:45:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_off
+    target:
+      entity_id:
+      - switch.remotehaskerstboom_buiten
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id:
+      - switch.remotehaskerstverlichting_pergola
+  mode: single
+- id: '1612280195072'
+  alias: Notify when a car is on the driveway
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
+    above: '1'
+    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.car
+      }}'
+  - platform: numeric_state
+    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
+    below: '3'
+    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.car
+      }}'
+  condition: []
+  action:
+  - service: input_text.set_value
+    entity_id: input_text.datetimestamp
+    data_template:
+      value: '{{ now().strftime("%Y%m%d_%H%M%S") }}'
+  - service: camera.snapshot
+    data:
+      filename: /config/www/driveway/car_{{ states.input_text.datetimestamp.state
+        }}.jpg
+    entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  - service: notify.mobile_app_s20_elliot
+    data:
+      message: There is a car moving on the driveway
+      data:
+        image: https://hass.vandenboom.org:8143/local/driveway/car_{{ states.input_text.datetimestamp.state
+          }}.jpg?raw=true
+        ttl: 0
+        priority: high
+  mode: parallel
+  max: 10
+- id: '1612295360034'
+  alias: Motion detection driveway
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.000_cell_motion_detection
+    to: 'on'
+  condition: []
+  action:
+  - service: image_processing.scan
+    data: {}
+    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
+  - delay: 00:02:00
+  - service: image_processing.scan
+    data: {}
+    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
+  mode: queued
+  max: 10
+- id: '1612347132114'
+  alias: Notify when a person is on the driveway
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
+    above: '0'
+    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.person
+      }}'
+  condition: []
+  action:
+  - service: input_text.set_value
+    entity_id: input_text.datetimestamp
+    data_template:
+      value: '{{ now().strftime("%Y%m%d_%H%M%S") }}'
+  - service: camera.snapshot
+    data:
+      filename: /config/www/driveway/person_{{ states.input_text.datetimestamp.state
+        }}.jpg
+    entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  - service: notify.mobile_app_s20_elliot
+    data:
+      message: There is a person on the driveway
+      data:
+        image: https://hass.vandenboom.org:8143/local/driveway/person_{{ states.input_text.datetimestamp.state
+          }}.jpg?raw=true
+        ttl: 0
+        priority: high
+  mode: parallel
+  max: 10
+- id: '1612348959645'
+  alias: Somenbody is ringing the doorbell
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.doorbell_button
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id:
+      - media_player.google_home_kantoor
+      message: There is somebody at the door!
+  - service: camera.snapshot
+    data:
+      filename: /config/www/tmp/snapshot_doorbellringing.jpg
+    entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  - service: notify.mobile_app_s20_elliot
+    data:
+      message: There is somebody at the door!
+      data:
+        image: https://hass.vandenboom.org:8143/local/tmp/snapshot_doorbellringing.jpg?raw=true
+        ttl: 0
+        priority: high
+  mode: single
+- id: '1636291850180'
+  alias: Lamp VIP-Lounge milight aan link
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.schakelaar_vip_lounge
+    to: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.lamp_vip_lounge
+    data:
+      color_temp: 370
+      brightness: 160
+  mode: single
+- id: '1636291919399'
+  alias: Lamp VIP-Lounge milight uit link
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.schakelaar_vip_lounge
+    to: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    target:
+      entity_id: light.lamp_vip_lounge
+  mode: single
+- id: '1636292024226'
+  alias: Lamp VIP-Lounge switch link aan
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.lamp_vip_lounge
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.schakelaar_vip_lounge
+  mode: single
+- id: '1636292080611'
+  alias: Lamp VIP-Lounge switch link uit
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.lamp_vip_lounge
+    to: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.schakelaar_vip_lounge
+  mode: single
+- id: '1636300637082'
+  alias: Lamp Kantoor milight aan link
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.schakelaar_kantoor
+    to: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.lamp_kantoor
+    data:
+      color_temp: 370
+      brightness: 120
+  mode: single
+- id: '1636300697839'
+  alias: Lamp Kantoor milight uit link
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.schakelaar_kantoor
+    to: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    target:
+      entity_id: light.lamp_kantoor
+  mode: single
+- id: '1636300756739'
+  alias: Lamp Kantoor switch link aan
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.lamp_kantoor
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.schakelaar_kantoor
+  mode: single
+- id: '1636300848651'
+  alias: Lamp Kantoor switch link uit
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.lamp_kantoor
+    to: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.schakelaar_kantoor
+  mode: single
+- id: '1636576395137'
+  alias: Controller - IKEA E1524/E1810 TRÅDFRI Wireless 5-Button Remote
+  description: ''
+  use_blueprint:
+    path: EPMatt/ikea_e1524_e1810.yaml
+    input:
+      controller_entity: sensor.tradfri_remote_action
+      action_button_left_short: []
+      helper_last_controller_event: input_text.datetimestamp
+      action_button_center_short:
+      - type: toggle
+        device_id: 83a938bfc710dd57f76202f5073f526e
+        entity_id: switch.schakelaar_kantoor
+        domain: switch
+      integration: Zigbee2MQTT
+- id: '1646420035188'
+  alias: Tag Test 1 is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 16b9506d-4205-4322-8a58-7949ac8e4e9a
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.hanglamp_eettafel
   mode: single

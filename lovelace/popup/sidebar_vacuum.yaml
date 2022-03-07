@@ -1,0 +1,185 @@
+action: fire-dom-event
+browser_mod:
+  command: popup
+  title: Dammsugare
+  style:
+    .: |
+      :host .content {
+        width: calc(385px + 510px);
+        max-width: 90vw;
+      }
+    layout-card$grid-layout:
+      $: |
+        hui-vertical-stack-card {
+          animation: border 1s forwards;
+        }
+        @keyframes border {
+          0%, 100% {
+              border-right: 1.5px solid rgba(0, 0, 0, 0.2);
+          }
+        }
+        /* phone */
+        @media screen and (max-width: 800px) {
+          hui-vertical-stack-card {
+              border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+              padding-right: 0;
+              animation: none;
+          }
+        }
+      $hui-vertical-stack-card:
+        $: |
+          hui-horizontal-stack-card {
+            padding: 0em 2em 2.3em 2em;
+          }
+        $hui-entities-card$: |
+          .card-content {
+            padding: var(--card-content-padding);
+          }
+        $hui-horizontal-stack-card$: |
+          #root {
+            justify-content: space-evenly;
+          }
+  card:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-template-columns: 385px 510px
+      grid-template-rows: 1fr
+      grid-template-areas: |
+        "info map"
+      mediaquery:
+        #phone
+        "(max-width: 800px)":
+          grid-template-columns: 1fr
+          grid-template-rows: repeat(2, 1fr)
+          grid-template-areas: |
+            "info"
+            "map"
+    cards:
+
+      #################################################
+      #                                               #
+      #                 INSTÄLLNINGAR                 #
+      #                                               #
+      #################################################
+
+      - type: vertical-stack
+        view_layout:
+          grid-area: info
+        cards:
+        - type: entities
+          title: Inställningar
+          card_mod:
+            class: header
+          entities:
+
+          - entity: vacuum.morty
+
+          - entity: sensor.template_vacuum_lastclean
+
+          - type: custom:bar-card
+            width: 55%
+            height: 2em
+            decimal: 0
+            unit_of_measurement: '%'
+            positions:
+              icon: outside
+              indicator: 'off'
+              name: outside
+            severity:
+              - color: '#303435'
+                from: 11
+                to: 100
+              - color: '#6d2525'
+                from: 0
+                to: 10
+            entity_row: true
+            entities:
+
+              - entity: vacuum.morty
+                attribute: battery_level
+                name: Batteri
+                icon: mdi:battery
+
+              - entity: sensor.template_vacuum_filter
+
+              - entity: sensor.template_vacuum_mainbrush
+
+              - entity: sensor.template_vacuum_sidebrush
+
+              - entity: sensor.template_vacuum_sensors
+
+          - entity: select.vacuum_speed
+
+        - type: horizontal-stack
+          cards:
+
+            - type: custom:button-card
+              entity: vacuum.morty
+              icon: mdi:play-pause
+              tap_action:
+                action: call-service
+                service: >
+                  [[[
+                    return entity.state === 'docked' || entity.state === 'paused'
+                      ? 'vacuum.start'
+                      : 'vacuum.pause';
+                  ]]]
+                service_data:
+                  entity_id: >
+                    [[[ return entity.entity_id; ]]]
+              template: icon_only
+
+            - type: custom:button-card
+              entity: vacuum.morty
+              icon: mdi:battery-charging
+              tap_action:
+                action: call-service
+                service: vacuum.return_to_base
+                service_data:
+                  entity_id: >
+                    [[[ return entity.entity_id; ]]]
+              template: icon_only
+
+            - type: custom:button-card
+              icon: mdi:delete-empty
+              tap_action:
+                action: call-service
+                service: vacuum.send_command
+                service_data:
+                  entity_id: vacuum.morty
+                  command: app_goto_target
+                  params: [16821,23105]
+              template: icon_only
+
+      #################################################
+      #                                               #
+      #                 KARTLÄGGNING                  #
+      #                                               #
+      #################################################
+
+      - type: vertical-stack
+        view_layout:
+          grid-area: map
+        cards:
+        - type: entities
+          title: Kartläggning
+          card_mod:
+            class: header
+            style: |
+              #states {
+                padding-bottom: 0;
+              }
+          entities:
+            - type: custom:xiaomi-vacuum-map-card
+              title: Kartläggning
+              entity: vacuum.morty
+              map_camera: camera.vacuum_map
+              camera_calibration: true
+              zones:
+                - [[15250, 17400, 20050, 21000]]
+                - [[15000, 20800, 19100, 23950]]
+                - [[19050, 21050, 23050, 24950]]
+                - [[17900, 24050, 21550, 28650]]
+                - [[21600, 25000, 27600, 28800]]
+              language: se

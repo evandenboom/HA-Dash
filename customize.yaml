@@ -1,38 +1,5 @@
-switch.qubino_zmnhbdx_flush_2_relays_switch_11:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_2:
-  icon: mdi:lightbulb
-light.lamp_woonkamer: {}
 device_tracker.google_maps_104742499472119555757:
   entity_picture: /local/max_face.png
-binary_sensor.kaipule_pir_celling_sensor_sensor:
-  device_class: motion
-binary_sensor.kaipule_pir_celling_sensor_sensor_2:
-  device_class: motion
-binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor:
-  device_class: motion
-binary_sensor.0x00158d00026eecea_contact:
-  device_class: window
-binary_sensor.0x00158d0002726273_contact:
-  device_class: door
-binary_sensor.0x00158d0002b9335d_occupancy:
-  device_class: motion
-binary_sensor.0x00158d0002b6d2c4_occupancy:
-  device_class: motion
-binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_2:
-  device_class: motion
-binary_sensor.kaipule_technology_co_ltd_pir_celling_sensor_sensor_3:
-  device_class: motion
-switch.qubino_goap_zmnhdd1_flush_dimmer_switch: {}
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_10:
-  icon: mdi:lightbulb
-sensor.0x00158d0002772b1a_humidity: {}
 sensor.alectov1_0060_temp:
   friendly_name: Buitentemperatuur Zon
 light.newkaku_03582c00_3:
@@ -46,37 +13,19 @@ sensor.alectov1_0060_wings:
   unit_of_measurement: Beaufort
 sensor.alectov1_0060_windir:
   friendly_name: Wind Richting Gr
-sensor.alectov1_0060_winsp:
+sensor.remotehasalectov1_036c_winsp:
   friendly_name: Windkracht
-  unit_of_measurement: Beaufort
+  unit_of_measurement: m/s
 light.newkaku_03582c00_2:
   friendly_name: Aquarium Kim (new)
-light.newkaku_013f0400_3: {}
-switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2:
-  icon: mdi:sony-playstation
 input_boolean.vacation_mode:
   icon: mdi:beach
 sensor.tv_vip_lounge:
   icon: mdi:television
 sensor.tv_woonkamer:
   icon: mdi:television
-switch.qubino_goap_zmnhdd1_flush_dimmer_switch_2:
-  friendly_name: Wandlamp Woonkamer
-light.newkaku_013f0400_2: {}
-device_tracker.sm_g965f:
-  friendly_name: Elliot SGS9+
 sensor.nodered_5ea50184_6b383:
   unit_of_measurement: mm
-sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_2:
-  friendly_name: Playstation Stroomverbruik
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_19:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12:
-  icon: mdi:lightbulb
-binary_sensor.000_cell_motion_detection:
-  friendly_name: PIR Sensor Voordeur
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_4:
-  icon: mdi:lightbulb
 climate.woonk_vloerv_2:
   friendly_name: Woonk. Vloerv.
   type: thermostat
@@ -113,16 +62,66 @@ climate.vip_lounge_2:
   camera.voordeur_mediaprofile_channel1_mainstream:
     friendly_name: Voordeur
     type: camera
-binary_sensor.openclose_6:
+media_player.62208f8f_991cf16c:
+  friendly_name: Mediaplayer Tablet Woonkamer
+media_player.438c981a_8444ec89:
+  friendly_name: Mediaplayer iMac
+switch.playstation_5: {}
+sensor.remotehasalectov1_036c_temp:
+  friendly_name: Temperatuur Achtertuin
+binary_sensor.openclose_29:
+  friendly_name: Window Max
+  icon: mdi:window-closed
+binary_sensor.window_door_sensor:
+  friendly_name: Raam Kim
+  icon: mdi:window-closed
+binary_sensor.window_door_sensor_3:
+  icon: mdi:door-sliding
+binary_sensor.window_door_sensor_2:
+  icon: mdi:door-closed
+binary_sensor.window_door_sensor_4:
+  icon: mdi:lock
+switch.on_off_plug_in_unit_5:
+  icon: mdi:lightbulb
+switch.on_off_plug_in_unit_6:
+  icon: mdi:lightbulb
+switch.on_off_plug_in_unit_7:
+  icon: mdi:lightbulb
+switch.tuinverlichting_2:
+  icon: mdi:lightbulb
+switch.tuinverlichting_2_2:
+  icon: mdi:lightbulb
+switch.koof_woonkamer_2_2:
+  icon: mdi:lightbulb
+binary_sensor.raam_kim_contact:
   device_class: window
-binary_sensor.openclose_7:
-  device_class: door
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_7:
-  icon: mdi:fan
-binary_sensor.openclose_12:
-  device_class: door
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_21:
-  icon: mdi:lightbulb
-switch.qubino_goap_zmnhbdx_flush_2_relays_switch_20:
-  icon: mdi:lightbulb
-binary_sensor.presence_14: {}
+binary_sensor.raam_max_contact:
+  device_class: window
+sensor.p1_meter_total_power_export_t1:
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy
+sensor.p1_meter_total_power_export_t2:
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy
+sensor.p1_meter_total_power_import_t1:
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy
+sensor.p1_meter_total_power_import_t2:
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy
+sensor.solaredge_lifetime_energy:
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+  device_class: energy
+sensor.solaredge_lifetime_energy_kwh:
+  device_class: energy
+  state_class: total_increasing
+  last_reset: '1970-01-01T00:00:00+00:00'
+sensor.wasmachine_electric_consumption_kwh:
+  device_class: energy
+  state_class: measurement
+  last_reset: '1970-01-01T00:00:00+00:00'

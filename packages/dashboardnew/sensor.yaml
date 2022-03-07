@@ -1,0 +1,134 @@
+sensor:
+
+    ####################################################
+    #                                                  #
+    #                     SENSOR                       #
+    #                                                  #
+    ####################################################
+
+  - platform: version
+    name: hass_version_installed
+    source: local
+
+  - platform: version
+    name: hass_version_latest
+    source: container
+
+  - platform: version
+    name: hass_version_latest_beta
+    source: container
+    beta: true
+
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant.log
+
+  - platform: sql
+    db_url: !secret recorder.db_url
+    queries:
+      - name: Database
+        query: >
+          SELECT table_schema "hassio", Round(Sum(data_length + index_length) / POWER(1024,2), 1) 
+          "value" FROM information_schema.tables WHERE table_schema="hassio" GROUP BY table_schema;
+        column: value
+        unit_of_measurement: MB
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: processor_use
+      - type: last_boot
+
+  - platform: uptime
+
+  - platform: time_date
+    display_options:
+      - time
+      - date
+
+  - platform: rest
+    name: esphome_version_latest
+    resource: https://api.github.com/repos/esphome/esphome/releases/latest
+    authentication: basic
+    username: !secret github_username
+    password: !secret github_access_token
+    value_template: >
+      {{ value_json.tag_name }}
+    scan_interval: 86400
+
+  - platform: scrape
+    name: synology_dsm_latest
+    resource: https://www.synology.com/en-global/releaseNote/DSM
+    select: >
+      #release_notes_content > div:first-child > h3
+    value_template: >
+      {{ value.split(' ')[1] }}
+    scan_interval: 86400
+  
+  - platform: rest
+    name: covid_19_folkhalsomyndigheten
+    resource: https://www.arcgis.com/sharing/rest/content/items/2dc63e26f509468f896ec69476b0dab3/data
+    value_template: >
+      {{ 'Otillgänglig' if value_json.embedCode == '' else 'Tillgänglig' }}
+    json_attributes_path: $.widgets.widget_1.config
+    json_attributes: [embedCode]
+    scan_interval: 21600
+
+  #- platform: rest
+  #  name: skanetrafiken
+  #  resource: !secret skanetrafiken
+  #  value_template: >
+  #    {{ value_json.Trip[0].LegList.Leg[1].Product.num }}
+  #  json_attributes_path: $.Trip[0].LegList.Leg[1].Origin
+  #  json_attributes:
+  #    - name
+  #    - time
+  #    - date
+  #  scan_interval: 268
+
+  - platform: rest
+    name: hass_release_notes
+    resource: https://api.github.com/repos/home-assistant/core/releases/latest
+    value_template: >
+      {{ value_json.name }}
+    json_attributes:
+      - body
+    scan_interval: 21600
+
+  - platform: rest
+    name: hass_release_notes_rc
+    resource: https://api.github.com/repos/home-assistant/core/releases?per_page=1
+    value_template: >
+      {{ value_json[0].name }}
+    json_attributes:
+      - body
+    scan_interval: 21600
+
+  - platform: dnsip
+
+    #- platform: waste_collection_schedule
+  #  name: Sophämtning
+  #  value_template: >
+  #    {{ value.types | join(', ') + ' ' }}
+  #    {% if value.daysTo == 0 %}
+  #      idag
+  #    {% elif value.daysTo == 1 %}
+  #      imorgon
+  #    {% elif value.daysTo == 2 %}
+  #      i övermorgon
+  #    {% else %}
+  #      om {{ value.daysTo }} dagar
+  #    {% endif %}
+
+  #- platform: command_line
+  #  name: imac_ip
+  #  command: !secret imac_ip
+  #  scan_interval: 86400
+
+  #- platform: command_line
+  #  name: monitors_volume
+  #  command: !secret monitors_update_volume
+  #  scan_interval: 86400
+

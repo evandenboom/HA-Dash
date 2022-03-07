@@ -74,7 +74,8 @@ Home Assistant:
     }
 
   # Primary Color
-  primary-color: '#03a9f4'
+  primary-color: '#03A9F4'
+  # primary-color: '#5294E2'
   ha-card-background: 'var(--button-color)'
   paper-card-background-color: 'var(--ha-card-background)'
   paper-toast-background-color: '#821414'

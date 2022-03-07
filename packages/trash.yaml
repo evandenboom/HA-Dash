@@ -56,7 +56,7 @@ sensor:
     postal_code: '4823MG'              # (required, default = '')
     street_number: '41'               # (required, default = '')
     suffix: ''                         # (optional, default = '')
-    include_date_today: false        # (optional, default = false) to take or not to take Today into account in the next pickup.
+    exclude_pickup_today: true       # (optional, default = true) to take or not to take Today into account in the next pickup.
     default_label: Geen              # (optional, default = Geen) label if no date found
 
 

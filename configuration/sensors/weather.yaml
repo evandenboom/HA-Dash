@@ -3,7 +3,7 @@
     wind_dir:
       friendly_name: 'Windrichting'
       value_template: >-
-        {% set wind_dir = states.sensor.alecto_ws4500_2b_01_wind_direction.state %}
+        {% set wind_dir = states.sensor.remotehasalectov1_036c_windir.state %}
         {% if wind_dir == null %}"-"
         {% elif wind_dir | float<=11 %}N
         {% elif wind_dir | float>348 %}N

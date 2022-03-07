@@ -1,0 +1,44 @@
+3d-printer:
+  
+  background-image: 'center / cover no-repeat url("/local/images/wallpapers/greytriangles.png") fixed'
+  primary-background-color: 'var(--background-image)' 
+  
+  theme-card-border-radius: 10px 30px 10px
+  theme-thick-border: 30px solid var(--bg-color3)
+  
+  paper-card-transparency: 'rgba(255, 255, 255, 1.0)'
+  ha-card-background: 'rgba(89,87,86,0.4)'
+  paper-card-background-color: "var(--ha-card-background)"
+
+  shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+  shadow-2: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+  shadow-transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+
+  card-mod-theme: 3d-printer
+    
+  card-mod-view: |
+    :host {
+      background: var(--primary-background-color) !important;
+    }
+    #badges {
+      display: flex !important;
+      justify-content: space-around;
+    }
+    #columns .column > * {
+        margin: 32px 16px;
+    }
+
+  card-mod-card: |
+    ha-card {
+      --ha-card-border-radius: var(--theme-card-border-radius);
+      border: var(--theme-thick-border);
+      box-shadow: var(--shadow-1);
+      transition: var(--shadow-transition);
+    }
+    ha-card:hover {
+      box-shadow: var(--shadow-2);
+    }
+
+  
+
+ 

@@ -8,4 +8,4 @@ title: Home
 background: var(--background-image)
 popup_cards: !include ./../../../homekit-infused/base/templates/popup-cards/popup-cards.yaml
 views: 
-  !include ./../../../homekit-infused/base.yaml
+ - !include ./../../../homekit-infused/base.yaml

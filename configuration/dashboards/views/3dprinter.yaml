@@ -1,0 +1,5 @@
+# 3D-Printer
+
+title: 3D-Printer
+views:
+  - !include ./../../../lovelace/view_3dprinter.yaml

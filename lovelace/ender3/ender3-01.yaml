@@ -1,0 +1,101 @@
+#          font-family: Raleway;
+type: vertical-stack
+cards:
+  - type: markdown
+    content: 3D-Printer
+
+  - type: entities
+    style:
+      .: |
+        ha-card {
+          border: solid 1px var(--border-color);
+        }
+      "#states div:nth-child(1)":
+        hui-sensor-entity-row:
+          $: |
+            .content::after{
+              content: '';
+              display: inline-block;
+              width: 34px;
+              height: 34px;
+              -moz-border-radius: 17px;
+              -webkit-border-radius: 17px;
+              border-radius: 17px;
+              background-color:
+              {% set updated = (as_timestamp(now()) - as_timestamp(states.sensor.octoprint_current_state.last_updated)) / 60 %}
+              {% set state = states.sensor.octoprint_current_state.state %}
+              {% if state == 'Printing' and updated < 5 %}
+                orange
+              {% elif state == 'Operational' and updated < 5 %}
+                green
+              {% else %}
+                red
+              {% endif %}
+              ;
+              margin-left: 10px;
+              }
+            .content {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              }
+
+    entities:
+      - entity: sensor.octoprint_actual_tool0_temp
+        name: Hotend
+        state_header: Actual
+        type: custom:multiple-entity-row
+        entities:
+          - entity: sensor.octoprint_target_tool0_temp
+            unit: '°C'
+            name: 'Set'
+      - entity: sensor.octoprint_actual_bed_temp
+        name: Heatbed
+        state_header: Actual
+        type: custom:multiple-entity-row
+        entities:
+          - entity:  sensor.octoprint_target_bed_temp
+            unit: '°C'
+            name: 'Set'
+#      - entity: sensor.octoprint_enclosure_temperature
+#        name: Gehäuse
+#        state_header: Temperatur
+#        type: custom:multiple-entity-row
+#        entities:
+#          - entity: sensor.octoprint_enclosure_humidity
+#            unit: '%'
+#            name: 'Luftfeuchtigkeit'
+      - entity: sensor.octoprint_job_file
+        name: File
+        icon: mdi:file-outline
+      - entity: sensor.octoprint_finish
+        name: Time
+        icon: 'mdi:clock-outline'
+        state_header: 'ETA'
+        type: custom:multiple-entity-row
+        entities:
+          - entity: sensor.octoprint_remaining_time
+            name: 'Time remaning'
+          - entity: sensor.octoprint_elapsed_time
+            name: 'Time elapsed'
+      - entity: sensor.octoprint_current_state
+        name: Status
+        state_header: 'Status'
+        secondary_info: last-changed
+        icon: mdi:bullseye-arrow
+        type: custom:multiple-entity-row
+        entities:
+          - entity: sensor.octoprint_job_percentage
+            name: Progress
+
+  - type: picture-entity
+    style:
+      .: |
+        ha-card {
+          height: 330px;
+        }
+    entity: camera.octoprint
+    camera_view: live
+    show_state: false
+    show_name: false
+

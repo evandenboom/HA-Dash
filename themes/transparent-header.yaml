@@ -1,0 +1,17 @@
+transparent-header:
+
+  card-mod-theme: transparent-header
+
+  background-image: 'center / cover no-repeat url("/local/images/wallpapers/greytriangles.png") fixed'
+  primary-background-color: 'var(--background-image)' 
+
+  card-mod-root: |
+    ha-app-layout {
+      background: var(--primary-background-color) !important;
+    }
+    app-header {
+      background: rgba(0,0,0,0.1) !important;
+    }
+    app-toolbar {
+      background: none !important;
+    }

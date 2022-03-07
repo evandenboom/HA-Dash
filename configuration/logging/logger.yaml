@@ -2,5 +2,6 @@ default: error
 logs:
 #    homeassistant.components.solaredge.sensor: critical
   homeassistant.components.stream.worker: critical
+  evohome_rf.packet_log: info
 #    mind: debug
 #    frontend.js.latest.202008110: debug

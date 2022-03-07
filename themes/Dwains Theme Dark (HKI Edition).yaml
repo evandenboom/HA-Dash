@@ -66,13 +66,13 @@ Dwains Theme Dark (HKI Edition):
 
   # Card Mod
   card-mod-theme: Dwains Theme Dark (HKI Edition)
-  card-mod-root: |
-    app-header {
-      display: none !important;
-    }
-    #view {
-      min-height: calc(100vh) !important;
-    }
+  #card-mod-root: |
+  #  app-header {
+  #    display: none !important;
+  #  }
+  #  #view {
+  #    min-height: calc(100vh) !important;
+  #  }
 
   # Toast / Badge
   paper-toast-background-color: '#821414'

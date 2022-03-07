@@ -6,58 +6,17 @@ db_url: !secret recorder.db_url
 include:
   entities:
   - binary_sensor.000_cell_motion_detection
-#  - binary_sensor.000_global_scene_change
-#  - binary_sensor.000_motion_alarm
-#  - binary_sensor.04_023856_battery
-#  - binary_sensor.04_023856_window
-#  - binary_sensor.04_023858_battery
-#  - binary_sensor.04_023858_window
-#  - binary_sensor.04_027356_battery
-#  - binary_sensor.04_027356_window
-#  - binary_sensor.04_027360_battery
-#  - binary_sensor.04_027360_window
-#  - binary_sensor.04_027368_battery
-#  - binary_sensor.04_027368_window
-#  - binary_sensor.04_027370_battery
-#  - binary_sensor.04_027370_window
-#  - binary_sensor.04_117122_battery
-#  - binary_sensor.04_117122_window
-#  - binary_sensor.04_117150_battery
-#  - binary_sensor.04_117150_window
-#  - binary_sensor.34_036363_battery
-#  - binary_sensor.34_036365_battery
-#  - binary_sensor.34_036367_battery
-#  - binary_sensor.34_036381_battery
-  - binary_sensor.34_036383_battery
-#  - binary_sensor.34_172187_battery
-#  - binary_sensor.34_172225_battery
   - binary_sensor.above_horizon
   - binary_sensor.doorbell_button
-#  - binary_sensor.gf134r_ignition
   - binary_sensor.gf134r_locked
-#  - binary_sensor.gf134r_parking_brake
-#  - binary_sensor.irrigation_cycle_start_clash
   - binary_sensor.irrigation_sensor_raining_now
-  - binary_sensor.motion_sensor
-  - binary_sensor.openclose_12
-  - binary_sensor.openclose_6
-  - binary_sensor.openclose_7
-  - binary_sensor.presence_5
-#  - binary_sensor.rfy_000001_1
-#  - binary_sensor.rfy_000002_1
-#  - binary_sensor.rfy_000003_1
-#  - binary_sensor.rfy_000004_1
   - binary_sensor.sm_g986b_is_charging
-#  - binary_sensor.sm_g986b_wifi_state
   - binary_sensor.sm_t580_is_charging
-#  - binary_sensor.sm_t580_wifi_state
-#  - binary_sensor.snapshots_stale
   - binary_sensor.sonoff_4ch_button_1
   - binary_sensor.sonoff_4ch_button_2
   - binary_sensor.sonoff_4ch_button_3
   - binary_sensor.sonoff_4ch_button_4
   - binary_sensor.sonoff_4ch_status
-  - binary_sensor.water_8
   - binary_sensor.woonkamer_motion_meta
   - climate.badkamer_2
   - climate.controller
@@ -76,11 +35,8 @@ include:
   - device_tracker.google_maps_104742499472119555757
   - device_tracker.google_maps_107152329256291623314
   - device_tracker.google_maps_115305887383945385383
-#  - device_tracker.sm_g965f
   - device_tracker.sm_g986b
   - light.7cfaa28d_01e89456
-#  - light.configuration_tool_1
-#  - light.d8abb9d7_94b67733
   - light.dimmable_light_2
   - light.ibox_vip_lounge
   - light.ibox_woonkamer
@@ -90,16 +46,6 @@ include:
   - light.lamp_keuken
   - light.lamp_vip_lounge
   - light.lamp_woonkamer
-  - light.qubino_goap_zmnhdd1_flush_dimmer_level
-  - light.qubino_goap_zmnhdd1_flush_dimmer_level_2
-#  - light.sonoff_4ch_blue_led
-#  - light.woonkamer
-#  - media_player.7cfaa28d_01e89456
-#  - media_player.d8abb9d7_94b67733
-#  - media_player.google_home_kantoor
-#  - media_player.google_home_woonkamer
-#  - media_player.stb_arris_uhd
-#  - media_player.stb_arris_uhd_2
   - person.elliot
   - person.kim
   - person.max
@@ -129,40 +75,14 @@ include:
   - sensor.34_036383_temperature
   - sensor.34_172187_temperature
   - sensor.34_172225_temperature
-  - sensor.7cfaa28d_01e89456
-#  - sensor.afvalwijzer_day_after_tomorrow
-#  - sensor.afvalwijzer_first_next_date
-#  - sensor.afvalwijzer_first_next_in_days
-#  - sensor.afvalwijzer_first_next_item
-#  - sensor.afvalwijzer_gft
-#  - sensor.afvalwijzer_papier
-#  - sensor.afvalwijzer_plastic
-#  - sensor.afvalwijzer_today
-#  - sensor.afvalwijzer_tomorrow
+  - sensor.34_142166_temperature
   - sensor.battery_level
-  - sensor.buitentemperatuur_owm
-#  - sensor.current_weather_owm
-#  - sensor.d8abb9d7_94b67733
-#  - sensor.date
-#  - sensor.date_time
-#  - sensor.date_time_iso
-#  - sensor.date_time_utc
-#  - sensor.doorbell_bssid
-#  - sensor.doorbell_esphome_version
-#  - sensor.doorbell_ip
-#  - sensor.doorbell_ssid
-#  - sensor.doorbell_uptime
-#  - sensor.doorbell_wifi_signal
-#  - sensor.forecast_high_today
+  - sensor.buitentemperatuur_owm_2
   - sensor.gf134r_battery
   - sensor.gf134r_fuel_left
   - sensor.gf134r_mileage
-#  - sensor.gf134r_mileage_left
   - sensor.grid_power_consumption
   - sensor.grid_power_production
-#  - sensor.hacs
-  - sensor.humidity_10
-#  - sensor.internet_time
 #  - sensor.irrigation_cycle1_duration_in_seconds
 #  - sensor.irrigation_cycle1_start_time_in_seconds
 #  - sensor.irrigation_cycle1_zone1_actual_duration_in_seconds
@@ -224,239 +144,36 @@ include:
 #  - sensor.irrigation_zone8_total_time_today
 #  - sensor.irrigation_zone8_total_time_yesterday
   - sensor.last_reboot
-  - sensor.lightlevel_4
-  - sensor.lightlevel_4_battery_level
-  - sensor.motion_sensor
-  - sensor.motion_sensor_battery_level
-  - sensor.multi_sensor_battery_level
   - sensor.nodered_5ea50184_6b383
-  - sensor.openclose_12_battery_level
-  - sensor.openclose_6_battery_level
-  - sensor.openclose_7_battery_level
-  - sensor.pressure_11
   - sensor.processor_usage
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_10
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_11
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_12
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_13
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_14
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_15
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_16
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_17
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_18
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_2
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_3
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_4
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_5
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_6
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_7
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_8
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_energy_9
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_10
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_11
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_12
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_13
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_14
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_15
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_16
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_17
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_18
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_2
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_3
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_4
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_5
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_6
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_7
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_8
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_power_9
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_10
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_11
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_12
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_13
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_14
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_15
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_16
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_17
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_18
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_2
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_3
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_4
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_5
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_6
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_7
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_8
-#  - sensor.qubino_goap_zmnhbdx_flush_2_relays_previous_reading_9
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_alarm_level
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_alarm_level_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_alarm_type
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_alarm_type_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_energy
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_energy_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_exporting
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_exporting_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_power
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_power_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_power_management
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_power_management_2
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_sourcenodeid
-#  - sensor.qubino_goap_zmnhdd1_flush_dimmer_sourcenodeid_2
   - sensor.rain_today
   - sensor.rain_yesterday
   - sensor.raining_now
   - sensor.sensor_weather_api_forecast_total_rain_today
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_alarm_level
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_alarm_level_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_alarm_type
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_alarm_type_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_current_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_energy_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_exporting
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_exporting_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_3
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_4
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_5
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_6
-# - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_7
-# - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_interval_8
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_power_management
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_2
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_3
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_4
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_5
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_6
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_7
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_previous_reading_8
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_sourcenodeid
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage
-#  - sensor.shenzhen_neo_electronics_co_ltd_power_plug_12a_voltage_2
-#  - sensor.sm_g965f_battery_state
-# - sensor.sm_g965f_geocoded_location
-#  - sensor.sm_g986b_audio_sensor
   - sensor.sm_g986b_battery_level
   - sensor.sm_g986b_battery_state
-#  - sensor.sm_g986b_bluetooth_connection
   - sensor.sm_g986b_charger_type
-#  - sensor.sm_g986b_do_not_disturb_sensor
   - sensor.sm_g986b_geocoded_location
-#  - sensor.sm_g986b_last_reboot
-#  - sensor.sm_g986b_light_sensor
-#  - sensor.sm_g986b_next_alarm
-#  - sensor.sm_g986b_phone_state
-#  - sensor.sm_g986b_pressure_sensor
-#  - sensor.sm_g986b_proximity_sensor
-#  - sensor.sm_g986b_storage_sensor
-#  - sensor.sm_g986b_wifi_bssid
   - sensor.sm_g986b_wifi_connection
-#  - sensor.sm_g986b_wifi_frequency
-#  - sensor.sm_g986b_wifi_ip_address
-#  - sensor.sm_g986b_wifi_link_speed
-#  - sensor.sm_g986b_wifi_signal_strength
-#  - sensor.sm_t580_audio_sensor
-#  - sensor.sm_t580_battery_health
   - sensor.sm_t580_battery_level
   - sensor.sm_t580_battery_state
-#  - sensor.sm_t580_bluetooth_connection
   - sensor.sm_t580_charger_type
-#  - sensor.sm_t580_detected_activity
-#  - sensor.sm_t580_do_not_disturb_sensor
-#  - sensor.sm_t580_geocoded_location
-#  - sensor.sm_t580_last_reboot
-#  - sensor.sm_t580_light_sensor
-#  - sensor.sm_t580_next_alarm
-#  - sensor.sm_t580_public_ip_address
-#  - sensor.sm_t580_storage_sensor
-#  - sensor.sm_t580_wifi_bssid
   - sensor.sm_t580_wifi_connection
-#  - sensor.sm_t580_wifi_frequency
-#  - sensor.sm_t580_wifi_ip_address
-#  - sensor.sm_t580_wifi_link_speed
   - sensor.sm_t580_wifi_signal_strength
-#  - sensor.snapshot_backup
-#  - sensor.solaredge_batteries
-#  - sensor.solaredge_consumption_power
   - sensor.solaredge_current_power
   - sensor.solaredge_energy_this_month
   - sensor.solaredge_energy_this_year
   - sensor.solaredge_energy_today
-#  - sensor.solaredge_exported_power
-#  - sensor.solaredge_gateways
-#  - sensor.solaredge_grid_power
-#  - sensor.solaredge_imported_power
-#  - sensor.solaredge_inverters
   - sensor.solaredge_lifetime_energy
-#  - sensor.solaredge_meters
-#  - sensor.solaredge_power_consumption
-#  - sensor.solaredge_production_power
-#  - sensor.solaredge_selfconsumption_power
-#  - sensor.solaredge_sensors
   - sensor.solaredge_site_details
-#  - sensor.solaredge_solar_power
-#  - sensor.solaredge_storage_level
-#  - sensor.solaredge_storage_power
   - sensor.speedtest_download
   - sensor.speedtest_ping
   - sensor.speedtest_upload
-#  - sensor.stb_arris_uhd_channel
-#  - sensor.stb_arris_uhd_channel_2
-  - sensor.temperature_9
-#  - sensor.time
-#  - sensor.time_date
-#  - sensor.time_utc
-  - sensor.water_8_battery_level
   - sensor.weather_api_forecast_total_rain_today
-#  - sensor.wifi_connection
   - sensor.wind_dir
-#  - sun.sun
-  - switch.aquarium_kim
-  - switch.aquarium_max
-  - switch.aquarium_woonkamer
   - switch.doorbell_chime
   - switch.doorbell_chime_active
-#  - switch.doorbell_restart
-#  - switch.guirlande
-#  - switch.hert_keukenraam
-#  - switch.kerstboom
-#  - switch.kerstboom_buiten
-#  - switch.kerstdorp
-#  - switch.kerstverlichting_achtertuin
-#  - switch.lichtslang
   - switch.on_off_plug_in_unit_3
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_10
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_11
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_12
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_13
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_14
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_15
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_16
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_17
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_18
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_2
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_3
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_4
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_5
-#  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_6
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_7
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_8
-  - switch.qubino_goap_zmnhbdx_flush_2_relays_switch_9
-  - switch.qubino_goap_zmnhdd1_flush_dimmer_switch
-  - switch.qubino_goap_zmnhdd1_flush_dimmer_switch_2
-#  - switch.rfy_000001_1
-#  - switch.rfy_000002_1
-#  - switch.rfy_000003_1
-#  - switch.rfy_000004_1
-  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch
-  - switch.shenzhen_neo_electronics_co_ltd_power_plug_12a_switch_2
   - switch.sonoff_4ch_relay_1
   - switch.sonoff_4ch_relay_2
   - switch.sonoff_4ch_relay_3
@@ -477,5 +194,93 @@ include:
   - binary_sensor.sonoff_mini_switch
   - binary_sensor.sonoff_mini_switch_2
   - binary_sensor.sonoff_mini_switch_3
-  - binary_sensor.presence_14
-  - binary_sensor.presence_16
+  - switch.lamp_overloop_2e_verdieping
+  - binary_sensor.switch_overloop_2e_verdieping
+  - switch.lamp_overloop_1e_verdieping
+  - binary_sensor.switch_overloop_1e_verdieping
+  - image_processing.begane_grond_cam
+  - image_processing.begane_grond_cam2
+  - image_processing.voordeur_cam
+  - sensor.octoprint_target_tool0_temp
+  - sensor.octoprint_target_bed_temp
+  - sensor.octoprint_actual_bed_temp
+  - sensor.octoprint_actual_tool0_temp
+  - sensor.octoprint_last_printtime
+  - sensor.octoprint_job_file
+  - sensor.filament_01_used
+  - sensor.filament_02_used
+  - sensor.filament_03_used
+  - sensor.filament_04_used
+  - sensor.filament_05_used
+  - sensor.filament_01_remaining
+  - sensor.filament_02_remaining
+  - sensor.filament_03_remaining
+  - sensor.filament_04_remaining
+  - sensor.filament_05_remaining
+  - binary_sensor.pir_fietsenschuur_home_security_motion_detection
+  - binary_sensor.pir_gang_home_security_motion_detection
+  - binary_sensor.pir_woonkamer_home_security_motion_detection
+  - sensor.solaredge_lifetime_energy_kwh
+  - sensor.co2_intensity
+  - sensor.wasmachine_electric_consumption_kwh
+  - sensor.treecentral_upload_throughput
+  - sensor.treecentral_download_throughput
+  - sensor.grid_fossil_fuel_percentage
+  - sensor.remotehasalectov1_0328_wings
+  - sensor.remotehasalectov1_0328_winsp
+  - sensor.remotehasalectov1_0328_windir
+  - sensor.remotehasalectov1_036c_hum
+  - sensor.remotehasalectov1_036c_temp
+  - sensor.remotehasalectov1_036c_windir
+  - sensor.remotehasalectov1_036c_wings
+  - sensor.remotehasalectov1_036c_winsp
+  - sensor.remotehasalectov1_0000_rain
+  - switch.playstation_2
+  - switch.koof_keuken_2
+  - switch.plafondlamp_keuken_2
+  - switch.koof_woonkamer_2
+  - switch.plafondlamp_woonkamer_4
+  - light.wandlamp_woonkamer_2
+  - light.hanglamp_eettafel
+  - switch.ventilatie_6
+  - switch.koof_woonkamer_2_2
+  - switch.tuinverlichting_2
+  - switch.tuinverlichting_2_2
+  - sensor.wasmachine_electric_consumption_w
+  - binary_sensor.nodered_552cc128beb296bf
+  - sensor.remotehasalectov1_008b_rain
+  - sensor.gardenmoisture1
+  - sensor.gardenmoisture2
+  - sensor.p1_meter_total_power_export_t1
+  - sensor.p1_meter_total_power_export_t2
+  - sensor.p1_meter_total_power_import_t1
+  - sensor.p1_meter_total_power_import_t2
+  - binary_sensor.frans_balkon_contact
+  - binary_sensor.slot_schuur_contact
+  - binary_sensor.schuifpui_contact
+  - binary_sensor.raam_kim_contact
+  - binary_sensor.raam_max_contact
+  - binary_sensor.woonkamer_occupancy
+  - binary_sensor.stairway_1st_floor_occupancy
+  - binary_sensor.stairway_2nd_floor_occupancy
+  - binary_sensor.landing_1st_floor_occupancy
+  - sensor.multisensor_badkamer_humidity
+  - sensor.multisensor_badkamer_temperature
+  - sensor.multisensor_badkamer_pressure
+  - sensor.multisensor_filament_1_humidity
+  - sensor.multisensor_filament_1_temperature
+  - sensor.multisensor_filament_1_pressure
+  - sensor.multisensor_filament_2_humidity
+  - sensor.multisensor_filament_2_temperature
+  - binary_sensor.rookmelder_3d_printer_smoke
+  - sensor.multisensor_filament_2_pressure
+  - sensor.temp_hum_3d_printer_humidity
+  - sensor.temp_hum_3d_printer_temperature
+  - switch.schakelaar_kantoor
+  - switch.schakelaar_vip_lounge
+  - humidifier.humidifier
+  - binary_sensor.humidifier_water_lacks
+  - sensor.current_humidity
+  - sensor.playstation_electric_consumption_w_2
+  - sensor.stairway_1st_floor_illuminance_lux
+  - sensor.stairway_2nd_floor_illuminance_lux

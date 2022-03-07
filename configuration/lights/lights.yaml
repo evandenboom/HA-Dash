@@ -24,13 +24,19 @@
       groups:
       - number: 1
         type: rgbww
+        name: Lamp Kantoor
+      - number: 2
+        type: rgbww
         name: Lamp VIP-Lounge
       - number: 3
         type: rgbww
-        name: Lamp Kantoor
+        name: Tuin Pad
+      - number: 4
+        type: rgbww
+        name: Tuin Rand
       - number: 1
         type: bridge-led
         name: iBox VIP-Lounge
         
-- platform: rflink
-  automatic_add: true
+#- platform: rflink
+#  automatic_add: true

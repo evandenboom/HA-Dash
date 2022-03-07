@@ -10,3 +10,11 @@ last_motion_1e_verdieping:
   attributes:
     icon: mdi:map-marker
     name: "Laatste detectie Verdieping 1"
+last_motion_2e_verdieping:
+  value: 'Unknown'
+  restore: true
+  attributes:
+    icon: mdi:map-marker
+    name: "Laatste detectie Verdieping 2"
+timestamp:
+  value: "Unknown"

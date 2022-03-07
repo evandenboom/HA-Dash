@@ -10,6 +10,17 @@ homeassistant:
         !secret homeassistant.trusted_networks
   customize: !include customize.yaml
   customize_glob: !include configuration/customize_glob/customize_glob.yaml
+  allowlist_external_dirs:
+    - /config/www/amazon-rekognition
+    - /config  
+  media_dirs:
+    driveway_motion:  /config/www/driveway
+    audio:  /config/www/audio
+  #  driveway_detect:  /config/www/amazon-rekognition
+
+
+media_source:
+energy:
 
  #>> The http integration serves all files and data required for the Home Assistant frontend. <<
 http:
@@ -43,6 +54,7 @@ script: !include scripts.yaml
 
 #>> This offers the official frontend to control Home Assistant. <<
 frontend:
+  themes: !include_dir_merge_named themes
 
 #>> Dashboards and views configuration
 lovelace:
@@ -82,7 +94,8 @@ lovelace_gen:
 
 #>> The manual alarm control panel platform enables you to create an alarm system in Home Assistant. <<
 alarm_control_panel:
-  - platform: manual  
+  - platform: manual
+    code: '1234'
 
 #>> InfluxDB integration (for use with Grafana, both externally hosted) <<  
 influxdb:
@@ -109,3 +122,91 @@ influxdb:
        - zwave
     entities:
        - sensor.01_108436_fault_log
+#evohome_cc:
+#  scan_interval: 60
+#  packet_log: /config/packets.log
+#  schema:
+#    controller: 01:108436
+
+image_processing:
+#    - platform: doods
+#      url: http://10.1.1.1:8088
+#      detector: default
+#      scan_interval: 2
+#      source:
+#          - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+#      file_out: /config/www/doods1.jpg
+#      confidence: 65
+#    - platform: doods
+#      url: http://10.1.1.1:8088
+#      detector: default
+#      scan_interval: 2
+#      source:
+#          - entity_id: camera.begane_grond_2
+#      file_out: /config/www/doods2.jpg
+#      confidence: 65
+#    - platform: facebox
+#      ip_address: 10.1.1.1
+#      port: 8089
+#      source:
+#        - entity_id: camera.begane_grond
+#          name: begane_grond_cam
+#    - platform: facebox
+#      ip_address: 10.1.1.1
+#      port: 8089
+#      source:
+#        - entity_id: camera.begane_grond_2
+#          name: begane_grond_cam2
+#    - platform: facebox
+#      ip_address: 10.1.1.1
+#      port: 8089
+#      source:
+#        - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+#          name: voordeur_cam
+    - platform: amazon_rekognition
+      aws_access_key_id: AKIASPBPRUFRAUPUR2UU
+      aws_secret_access_key: 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
+      region_name: eu-west-1 # optional region, default is us-east-1
+      confidence: 60 # Optional, default is 80 percent
+      targets:
+        - target: person
+          confidence: 85
+        - target: car
+          confidence: 85
+        - target: pet
+        - target: animal
+        - target: cat
+        - target: dog
+          confidence: 50
+      roi_y_min: 0.15 # optional, range 0-1, must be less than roi_y_max
+      roi_x_min: 0.05 # optional, range 0-1, must be less than roi_y_max
+      save_file_folder: /config/www/amazon-rekognition/ # Optional image storage
+      save_timestamped_file: True # Set True to save timestamped images, default False
+      always_save_latest_file: True
+      source:
+        - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+        - entity_id: camera.treecentral_achtertuin_schuur
+
+tts:
+  - platform: google_translate
+    cache: true
+    cache_dir: /tts
+    time_memory: 300
+    base_url: https://hass.vandenboom.org:8143
+    service_name: google_say
+
+#octoprint:
+#  host: octopi.local
+#  api_key: A428153C964E40EC8F7140F8268012C0
+#  bed: true
+#  number_of_tools: 3
+
+input_text:
+  datetimestamp:
+    name: Current date and time
+    initial: Unknown
+
+spotify:
+  client_id: 462f9aab8705448bbace7855f685d0cc
+  client_secret: 027324313a484b5ba48f497e5dcc58db
+

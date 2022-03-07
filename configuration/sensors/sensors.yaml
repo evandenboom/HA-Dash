@@ -1,7 +1,13 @@
 # sensors
     
-- platform: rflink
-  automatic_add: true
+#- platform: rflink
+#  automatic_add: false
+
+#- platform: systemmonitor
+#  resources:
+#    - type: processor_use
+#   - type: memory_use_percent
+#   - type: disk_use_percent
   
 - platform: template
   sensors:
@@ -37,12 +43,6 @@
     - 'time_utc'
     - 'beat'
 
-- platform: average
-  name: 'Average Temperature'
-  precision: 1
-  entities:
-    - sensor.temperature_9
-
 - platform: template
   sensors:
     average_house_temperature:
@@ -55,29 +55,29 @@
       value_template: >-
         {{ states|selectattr('entity_id','in',state_attr('group.alle_scenes','entity_id'))|selectattr('state','eq','on')|list|count }}
 
-- platform: template
-  sensors:
-    media_players_playing:
-      value_template: >
-        {% if states.media_player.google_home_kantoor.state == 'playing' %}
-          Playing
-        {% elif states.media_player.google_home_woonkamer.state == 'playing' %}
-          Playing
-        {% elif states.media_player.stb_arris_uhd.state == 'playing' %}
-          Playing
-        {% elif states.media_player.stb_arris_uhd_2.state == 'playing' %}
-          Playing
-        {% elif states.media_player.google_home_kantoor.state == 'paused' %}
-          Paused
-        {% elif states.media_player.google_home_woonkamer.state == 'paused' %}
-          Paused
-        {% elif states.media_player.stb_arris_uhd.state.state == 'paused' %}
-          Paused
-        {% elif states.media_player.stb_arris_uhd_2.state == 'paused' %}
-          Paused
-        {% else %}
-          Not Playing
-        {% endif %}     
+#- platform: template
+#  sensors:
+#    media_players_playing:
+#      value_template: >
+#        {% if states.media_player.google_home_kantoor.state == 'playing' %}
+#          Playing
+#        {% elif states.media_player.google_home_woonkamer.state == 'playing' %}
+#          Playing
+#        {% elif states.media_player.stb_arris_uhd.state == 'playing' %}
+#          Playing
+#        {% elif states.media_player.stb_arris_uhd_2.state == 'playing' %}
+#          Playing
+#        {% elif states.media_player.google_home_kantoor.state == 'paused' %}
+#          Paused
+#        {% elif states.media_player.google_home_woonkamer.state == 'paused' %}
+#          Paused
+#        {% elif states.media_player.stb_arris_uhd.state.state == 'paused' %}
+#          Paused
+#        {% elif states.media_player.stb_arris_uhd_2.state == 'paused' %}
+#          Paused
+#        {% else %}
+#          Not Playing
+#        {% endif %}     
 
 - platform: template
   sensors:
@@ -131,3 +131,50 @@
   sensors:
     smartphone_max_battery_level:
       value_template: '{{ state_attr("device_tracker.google_maps_104742499472119555757", "battery_level")}}%'
+
+#- platform: template
+#  sensors:
+#    octoprint_finish:
+#      value_template: '{{ (((states("sensor.octoprint_time_remaining")) | float ) + as_timestamp(now()) ) | timestamp_custom("%H:%M") }}'
+
+#- platform: template
+#  sensors:
+#    octoprint_remaining_time:
+#      value_template: >-
+#        {% set seconds = states("sensor.octoprint_time_remaining") | int %}
+#        {% set minutes = ((seconds % 3600) / 60) | int %}
+#        {% set hours = ((seconds % 86400) / 3600) | int %}
+#        {% set days = (seconds / 86400) | int %}
+#        {%- if days -%}{{days}} day{{'s, ' if days > 1 else ', '}}{%- endif -%}
+#        {%- if hours -%}{{hours}} hour{{'s, ' if hours > 1 else ', '}}{%- endif -%}
+#        {%- if seconds > 59 -%}{{minutes}} minute{{'s' if minutes > 1}}{%- endif -%}
+#        {%- if seconds < 60 and seconds > 0 -%}< 1 minute{%- endif -%}
+
+#- platform: template
+#  sensors:
+#    octoprint_elapsed_time:
+#      value_template: >-
+#        {% set seconds = states("sensor.octoprint_time_elapsed") | int %}
+#        {% set minutes = ((seconds % 3600) / 60) | int %}
+#        {% set hours = ((seconds % 86400) / 3600) | int %}
+#        {% set days = (seconds / 86400) | int %}
+#        {%- if days -%}{{days}} day{{'s, ' if days > 1 else ', '}}{%- endif -%}
+#        {%- if hours -%}{{hours}} hour{{'s, ' if hours > 1 else ', '}}{%- endif -%}
+#        {%- if seconds > 59 -%}{{minutes}} minute{{'s' if minutes > 1}}{%- endif -%}
+#        {%- if seconds < 60 and seconds > 0 -%}< 1 minute{%- endif -%}
+
+- platform: template
+  sensors:
+    solaredge_lifetime_energy_kwh:
+        friendly_name: 'Solar Lifetime kwh'
+        unit_of_measurement: 'kWh'
+        value_template: "{{ states('sensor.solaredge_lifetime_energy') | float / 1000 }}"
+
+- platform: template
+  sensors:
+    current_humidity:
+      value_template: '{{ state_attr("humidifier.humidifier", "current_humidity")}}%'
+      friendly_name: Current Humidity
+      unit_of_measurement: '%'
+
+  

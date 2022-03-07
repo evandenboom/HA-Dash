@@ -11,12 +11,6 @@ speedtestdotnet:
     - download
     - upload
    
-mind:
-  username: !secret mind.username
-  password: !secret mind.password
-  client_id: !secret mind.client_id
-  client_secret: !secret mind.client_secret
-  
-ziggonext:
-  username: !secret ziggo_username
-  password: !secret ziggo_password
+#ziggonext:
+#  username: !secret ziggo_username
+#  password: !secret ziggo_password
