@@ -122,47 +122,8 @@ influxdb:
        - zwave
     entities:
        - sensor.01_108436_fault_log
-#evohome_cc:
-#  scan_interval: 60
-#  packet_log: /config/packets.log
-#  schema:
-#    controller: 01:108436
 
 image_processing:
-#    - platform: doods
-#      url: http://10.1.1.1:8088
-#      detector: default
-#      scan_interval: 2
-#      source:
-#          - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-#      file_out: /config/www/doods1.jpg
-#      confidence: 65
-#    - platform: doods
-#      url: http://10.1.1.1:8088
-#      detector: default
-#      scan_interval: 2
-#      source:
-#          - entity_id: camera.begane_grond_2
-#      file_out: /config/www/doods2.jpg
-#      confidence: 65
-#    - platform: facebox
-#      ip_address: 10.1.1.1
-#      port: 8089
-#      source:
-#        - entity_id: camera.begane_grond
-#          name: begane_grond_cam
-#    - platform: facebox
-#      ip_address: 10.1.1.1
-#      port: 8089
-#      source:
-#        - entity_id: camera.begane_grond_2
-#          name: begane_grond_cam2
-#    - platform: facebox
-#      ip_address: 10.1.1.1
-#      port: 8089
-#      source:
-#        - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-#          name: voordeur_cam
     - platform: amazon_rekognition
       aws_access_key_id: !secret aws_access_key_id
       aws_secret_access_key: !secret aws_secret_access_key
@@ -194,12 +155,6 @@ tts:
     time_memory: 300
     base_url: https://hass.vandenboom.org:8143
     service_name: google_say
-
-#octoprint:
-#  host: octopi.local
-#  api_key: A428153C964E40EC8F7140F8268012C0
-#  bed: true
-#  number_of_tools: 3
 
 input_text:
   datetimestamp:
