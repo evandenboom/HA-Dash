@@ -164,8 +164,8 @@ image_processing:
 #        - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
 #          name: voordeur_cam
     - platform: amazon_rekognition
-      aws_access_key_id: AKIASPBPRUFRAUPUR2UU
-      aws_secret_access_key: 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
+      aws_access_key_id: !secret aws_access_key_id
+      aws_secret_access_key: !secret aws_secret_access_key
       region_name: eu-west-1 # optional region, default is us-east-1
       confidence: 60 # Optional, default is 80 percent
       targets:
