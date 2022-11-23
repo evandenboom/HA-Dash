@@ -1,7 +1,0 @@
-
-title: ender3
-icon: mdi:printer-3d-nozzle
-path: ender3
-cards:
-  - !include ender3/ender3-01.yaml
-  - !include ender3/ender3-02.yaml

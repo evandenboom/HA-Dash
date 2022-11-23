@@ -6,7 +6,7 @@
       device_class: motion
       value_template: >-
         {%- if is_state("binary_sensor.pir_woonkamer_home_security_motion_detection", "on")
-        or is_state("binary_sensor.motion_sensor_woonkamer", "on")
+        or is_state("binary_sensor.woonkamer_occupancy", "on")
         -%}
         True
         {%- else -%}

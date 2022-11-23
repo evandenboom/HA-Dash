@@ -63,7 +63,9 @@
   - event: sunset
     platform: sun
     offset: +00:30:00
-  condition: []
+  condition:
+  - condition: time
+    before: '22:00:00'
   action:
   - data: {}
     service: switch.turn_on
@@ -144,10 +146,10 @@
 - id: '1548623799915'
   alias: Ventilatie Badkamer aan
   trigger:
-  - above: '70'
+  - platform: numeric_state
+    entity_id: sensor.multisensor_badkamer_humidity
+    above: 71
     below: '100'
-    entity_id: sensor.multi_sensor_badkamer_2
-    platform: numeric_state
   condition: []
   action:
   - service: switch.turn_on
@@ -158,10 +160,10 @@
 - id: '1548927878492'
   alias: Ventilatie Badkamer uit
   trigger:
-  - above: '0'
-    below: '69'
-    entity_id: sensor.multi_sensor_badkamer_2
-    platform: numeric_state
+  - platform: numeric_state
+    entity_id: sensor.multisensor_badkamer_humidity
+    above: '0'
+    below: 70
   condition: []
   action:
   - service: switch.turn_off
@@ -697,7 +699,7 @@
       filename: /config/www/driveway/car_{{ states.input_text.datetimestamp.state
         }}.jpg
     entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-  - service: notify.mobile_app_s20_elliot
+  - service: notify.mobile_app_samsung_s22_elliot
     data:
       message: There is a car moving on the driveway
       data:
@@ -705,6 +707,12 @@
           }}.jpg?raw=true
         ttl: 0
         priority: high
+  - service: tts.google_say
+    data:
+      entity_id: media_player.google_home_kantoor
+      message: Er bewegen auto's op de oprit!
+      cache: true
+      language: nl
   mode: parallel
   max: 10
 - id: '1612295360034'
@@ -731,11 +739,17 @@
   trigger:
   - platform: numeric_state
     entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
-    above: '0'
+    above: 0
     value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.person
       }}'
   condition: []
   action:
+  - service: tts.google_say
+    data:
+      entity_id: media_player.google_home_kantoor
+      message: Er is iemand op de oprit!
+      cache: true
+      language: nl
   - service: input_text.set_value
     entity_id: input_text.datetimestamp
     data_template:
@@ -745,7 +759,7 @@
       filename: /config/www/driveway/person_{{ states.input_text.datetimestamp.state
         }}.jpg
     entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-  - service: notify.mobile_app_s20_elliot
+  - service: notify.mobile_app_samsung_s22_elliot
     data:
       message: There is a person on the driveway
       data:
@@ -767,14 +781,15 @@
   action:
   - service: tts.google_translate_say
     data:
-      entity_id:
-      - media_player.google_home_kantoor
-      message: There is somebody at the door!
+      entity_id: media_player.google_home_kantoor
+      cache: true
+      language: nl
+      message: Er staat iemand voor de deur!
   - service: camera.snapshot
     data:
       filename: /config/www/tmp/snapshot_doorbellringing.jpg
     entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-  - service: notify.mobile_app_s20_elliot
+  - service: notify.mobile_app_samsung_s22_elliot
     data:
       message: There is somebody at the door!
       data:
@@ -852,8 +867,8 @@
     target:
       entity_id: light.lamp_kantoor
     data:
-      color_temp: 370
-      brightness: 120
+      brightness: 170
+      kelvin: 6500
   mode: single
 - id: '1636300697839'
   alias: Lamp Kantoor milight uit link
@@ -922,3 +937,111 @@
     target:
       entity_id: switch.hanglamp_eettafel
   mode: single
+- id: '1655214418888'
+  alias: Somebody is ringing the doorbell 2
+  description: ''
+  use_blueprint:
+    path: seamus65/doorbell-notify-google-and-send-camera-snapshot-to-app.yaml
+    input:
+      doorbell: binary_sensor.doorbell_button
+      camera: camera.voordeur_mediaprofile_channel1_mainstream
+      notify_device: a2de9e807cc838414e358d58a4bb6fc0
+      google_device: media_player.google_home_kantoor
+- id: '1662540895943'
+  alias: Motion detection backyard
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.nodered_motion_achtertuin
+    to: 'on'
+  condition: []
+  action:
+  - service: image_processing.scan
+    data: {}
+    target:
+      entity_id: image_processing.rekognition_achtertuin_schuur_prof0_name
+  mode: parallel
+  max: 10
+- id: '1662541895792'
+  alias: Notify when a person is in the backyard
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: image_processing.rekognition_achtertuin_schuur_prof0_name
+    above: '0'
+    value_template: '{{ states. image_processing.rekognition_achtertuin_schuur_prof0_name.attributes.summary.person
+      }}'
+  condition: []
+  action:
+  - service: input_text.set_value
+    entity_id: input_text.datetimestamp
+    data_template:
+      value: '{{ now().strftime("%Y%m%d_%H%M%S") }}'
+  - service: camera.snapshot
+    data:
+      filename: /config/www/backyard/person_{{ states.input_text.datetimestamp.state
+        }}.jpg
+    entity_id: camera.achtertuin_schuur_prof0_name
+  - service: notify.mobile_app_samsung_s22_elliot
+    data:
+      message: There is a person in the backyard
+      data:
+        image: https://hass.vandenboom.org:8143/local/backyard/person_{{ states.input_text.datetimestamp.state
+          }}.jpg?raw=true
+        ttl: 0
+        priority: high
+  - repeat:
+      until:
+      - condition: state
+        entity_id: image_processing.rekognition_achtertuin_schuur_prof0_name
+        state: '0'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 1
+          seconds: 0
+          milliseconds: 0
+      - service: image_processing.scan
+        data: {}
+        target:
+          entity_id: image_processing.rekognition_achtertuin_schuur_prof0_name
+  mode: parallel
+- id: '1665121670862'
+  alias: Tag Test 1 is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 16b9506d-4205-4322-8a58-7949ac8e4e9a
+  condition: []
+  action: []
+  mode: single
+- id: '1668767324256'
+  alias: Doorbell pressed helper
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.doorbell_button
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    data: {}
+    target:
+      entity_id: input_boolean.doorbell_pressed
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.galaxy_tab_a_2016_screen
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.doorbell_pressed
+  mode: parallel
+  max: 10

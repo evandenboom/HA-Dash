@@ -1,5 +1,0 @@
-# irrigation
-
-title: Irrigation
-views:
-  - !include ./../../../lovelace/view_garden_version2.yaml

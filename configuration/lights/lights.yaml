@@ -1,5 +1,4 @@
 # lights
-
 - platform: limitlessled
   bridges:
     - host: !secret light.bridges.host1

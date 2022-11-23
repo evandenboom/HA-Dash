@@ -1,0 +1,49 @@
+#heating
+
+#evohome:
+#  username: !secret evohome.username
+#  password: !secret evohome.password
+#  scan_interval: 180
+
+#evohome_cc:
+#  scan_interval: 60
+#  packet_log: /config/packets.log
+#  restore_cache: true
+#  schema:
+#    controller: 01:108436
+
+
+ramses_cc:
+  packet_log: 
+    file_name: packet.log
+    rotate_bytes: null
+    rotate_backups: 7
+  restore_cache: false
+  ramses_rf:
+    enforce_known_list: true # if not true, still enforces the block_list
+    disable_discovery: false
+    enable_eavesdrop: true  # can be used to create an initial system schema
+  01:108436:
+#    system:
+#       appliance_control: 18:013336   # an OTB
+    zones:
+       "00": {sensor: 01:108436}  # controller is the sensor
+  known_list:
+    01:108436: # Evohome Central Unit
+    18:013336: # OTB
+    02:034319: # Servo's Vloerverwarming
+    04:027368: # Radiator valve Woonkamer
+    04:027356: # Radiator valve Woonkamer
+    34:036367: # Thermostat Woonkamer
+    04:117122: # Radiator valve VIP-Lounge
+    34:172187: # Thermostat VIP-Lounge
+    04:117150: # Radiator valve Kantoor
+    34:142166: # Thermostat Kantoor
+    04:027370: # Radiator valve Kamer Kim
+    34:036383: # Thermostat Kamer Kim
+    04:023858: # Radiator valve Master Bedroom
+    34:036381: # Thermostat Master Bedroom
+    04:027360: # Radiator valve Kamer Max
+    34:036365: # Thermostat Kamer Max
+    04:023856: # Radiator valve Badkamer
+    34:172225: #Thermostat Badkamer

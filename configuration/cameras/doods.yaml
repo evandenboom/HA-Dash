@@ -1,6 +1,0 @@
-- platform: generic
-  name: doods_cam1
-  still_image_url: https://hass.vandenboom.org:8143/local/doods1.jpg 
-- platform: generic
-  name: doods_cam2
-  still_image_url: https://hass.vandenboom.org:8143/local/doods2.jpg  

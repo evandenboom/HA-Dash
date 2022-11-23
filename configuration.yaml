@@ -16,6 +16,7 @@ homeassistant:
   media_dirs:
     driveway_motion:  /config/www/driveway
     audio:  /config/www/audio
+  external_url: https://hass.vandenboom.org:8143
   #  driveway_detect:  /config/www/amazon-rekognition
 
 
@@ -33,13 +34,13 @@ http:
 #>> Additional configuration <<
 camera: !include_dir_merge_list configuration/cameras/
 group: !include_dir_merge_named configuration/groups/
-light: !include_dir_merge_list configuration/lights/
 sensor: !include_dir_merge_list configuration/sensors/
 switch: !include_dir_merge_list configuration/switches/
 variable: !include_dir_merge_named configuration/variables/
 binary_sensor: !include_dir_merge_list configuration/binary_sensors/
 weather: !include_dir_merge_list configuration/weather/
 input_boolean: !include_dir_merge_named configuration/input_booleans/
+light: !include_dir_merge_list configuration/lights/
 
 #>> Logging <<
 history: !include configuration/logging/history.yaml
@@ -89,21 +90,26 @@ sun:
 system_health:
 
 #>> Custom components <<  
-browser_mod:  
 lovelace_gen:
 
 #>> The manual alarm control panel platform enables you to create an alarm system in Home Assistant. <<
-alarm_control_panel:
-  - platform: manual
-    code: '1234'
+#alarm_control_panel:
+#  - platform: manual
+#    code: '1234'
 
 #>> InfluxDB integration (for use with Grafana, both externally hosted) <<  
 influxdb:
+  api_version: !secret influxdb.api_version
   host: !secret inlfuxdb.host
   port: !secret inlfuxdb.port
-  database: !secret inlfuxdb.database
-  username: !secret inlfuxdb.username
-  password: !secret inlfuxdb.password
+  token: !secret influxdb.token
+  organization: !secret influxdb.organization
+  bucket: !secret inlfuxdb.bucket
+  ssl: false
+  verify_ssl: false
+#  database: !secret inlfuxdb.database
+#  username: !secret inlfuxdb.username
+#  password: !secret inlfuxdb.password
   max_retries: 3
   exclude:
     domains:
@@ -146,22 +152,16 @@ image_processing:
       always_save_latest_file: True
       source:
         - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-        - entity_id: camera.treecentral_achtertuin_schuur
+        - entity_id: camera.achtertuin_schuur_prof0_name
 
 tts:
   - platform: google_translate
     cache: true
     cache_dir: /tts
     time_memory: 300
-    base_url: https://hass.vandenboom.org:8143
     service_name: google_say
 
 input_text:
   datetimestamp:
     name: Current date and time
     initial: Unknown
-
-spotify:
-  client_id: 462f9aab8705448bbace7855f685d0cc
-  client_secret: 027324313a484b5ba48f497e5dcc58db
-

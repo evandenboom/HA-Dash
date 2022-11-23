@@ -83,66 +83,10 @@ include:
   - sensor.gf134r_mileage
   - sensor.grid_power_consumption
   - sensor.grid_power_production
-#  - sensor.irrigation_cycle1_duration_in_seconds
-#  - sensor.irrigation_cycle1_start_time_in_seconds
-#  - sensor.irrigation_cycle1_zone1_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone2_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone3_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone4_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone5_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone6_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone7_actual_duration_in_seconds
-#  - sensor.irrigation_cycle1_zone8_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_duration_in_seconds
-#  - sensor.irrigation_cycle2_start_time_in_seconds
-#  - sensor.irrigation_cycle2_zone1_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone2_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone3_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone4_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone5_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone6_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone7_actual_duration_in_seconds
-#  - sensor.irrigation_cycle2_zone8_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone1_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone2_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone3_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone4_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone5_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone6_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone7_actual_duration_in_seconds
-#  - sensor.irrigation_cycle3_zone8_actual_duration_in_seconds
   - sensor.irrigation_sensor_current_temp
   - sensor.irrigation_sensor_forecast_high_temp
   - sensor.irrigation_sensor_rainfall_today
   - sensor.irrigation_sensor_rainfall_yesterday
-#  - sensor.irrigation_sensor_zone1_switch
-#  - sensor.irrigation_sensor_zone2_switch
-#  - sensor.irrigation_sensor_zone3_switch
-#  - sensor.irrigation_sensor_zone4_switch
-#  - sensor.irrigation_sensor_zone5_switch
-#  - sensor.irrigation_sensor_zone6_switch
-#  - sensor.irrigation_sensor_zone7_switch
-#  - sensor.irrigation_sensor_zone8_switch
-#  - sensor.irrigation_ui_selected_cycle
-#  - sensor.irrigation_ui_selected_settings
-#  - sensor.irrigation_weather_outlook
-#  - sensor.irrigation_zone1_total_time_today
-#  - sensor.irrigation_zone1_total_time_yesterday
-#  - sensor.irrigation_zone2_total_time_today
-#  - sensor.irrigation_zone2_total_time_yesterday
-#  - sensor.irrigation_zone3_total_time_today
-#  - sensor.irrigation_zone3_total_time_yesterday
-#  - sensor.irrigation_zone4_total_time_today
-#  - sensor.irrigation_zone4_total_time_yesterday
-#  - sensor.irrigation_zone5_total_time_today
-#  - sensor.irrigation_zone5_total_time_yesterday
-#  - sensor.irrigation_zone6_total_time_today
-#  - sensor.irrigation_zone6_total_time_yesterday
-#  - sensor.irrigation_zone7_total_time_today
-#  - sensor.irrigation_zone7_total_time_yesterday
-#  - sensor.irrigation_zone8_total_time_today
-#  - sensor.irrigation_zone8_total_time_yesterday
   - sensor.last_reboot
   - sensor.nodered_5ea50184_6b383
   - sensor.processor_usage
@@ -251,10 +195,10 @@ include:
   - sensor.remotehasalectov1_008b_rain
   - sensor.gardenmoisture1
   - sensor.gardenmoisture2
-  - sensor.p1_meter_total_power_export_t1
-  - sensor.p1_meter_total_power_export_t2
-  - sensor.p1_meter_total_power_import_t1
-  - sensor.p1_meter_total_power_import_t2
+  - sensor.p1_meter_3c39e727c82a_total_power_export_t1
+  - sensor.p1_meter_3c39e727c82a_total_power_export_t2
+  - sensor.p1_meter_3c39e727c82a_total_power_import_t1
+  - sensor.p1_meter_3c39e727c82a_total_power_import_t2
   - binary_sensor.frans_balkon_contact
   - binary_sensor.slot_schuur_contact
   - binary_sensor.schuifpui_contact
@@ -282,5 +226,23 @@ include:
   - binary_sensor.humidifier_water_lacks
   - sensor.current_humidity
   - sensor.playstation_electric_consumption_w_2
+  - sensor.landing_1st_floor_illuminance_lux
   - sensor.stairway_1st_floor_illuminance_lux
   - sensor.stairway_2nd_floor_illuminance_lux
+  - sensor.woonkamer_illuminance_lux
+  - sensor.p1_meter_3c39e727c82a_active_power
+  - binary_sensor.nodered_motion_achtertuin
+  - image_processing.rekognition_achtertuin_schuur_prof0_name
+  - sensor.watermeter_3c39e72d5f22_active_water_usage
+  - sensor.watermeter_3c39e72d5f22_total_water_usage
+  - sensor.kamstrup_403_flow
+  - sensor.kamstrup_403_heat_energy_e1
+  - sensor.kamstrup_403_hourcounter
+  - sensor.kamstrup_403_temp1
+  - sensor.kamstrup_403_temp1xm3
+  - sensor.kamstrup_403_temp2
+  - sensor.kamstrup_403_temp2xm3
+  - sensor.kamstrup_403_tempdiff
+  - sensor.kamstrup_403_volume
+  - sensor.kamstrup_403_heat_energy_to_gas
+  - sensor.co2_sensor_co2

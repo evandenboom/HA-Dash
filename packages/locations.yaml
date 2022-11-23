@@ -8,27 +8,27 @@ device_tracker:
     new_device_defaults:
       track_new_devices: true
       
-  - platform: traccar
-    host: treecentral.vandenboom.org
-    port: 8082
-    username: admin
-    password: admin
+#  - platform: traccar
+#    host: treecentral.vandenboom.org
+#    port: 8082
+#    username: admin
+#    password: admin
 
-zone:      
-   - name: !secret zone.loc1.name
-     latitude: !secret zone.loc1.latitude
-     longitude: !secret zone.loc1.longitude
-     radius: 25
-     icon: !secret zone.loc1.icon
+#zone:      
+#   - name: !secret zone.loc1.name
+#     latitude: !secret zone.loc1.latitude
+#     longitude: !secret zone.loc1.longitude
+#     radius: 25
+#     icon: !secret zone.loc1.icon
      
-   - name: !secret zone.loc2.name
-     latitude: !secret zone.loc2.latitude
-     longitude: !secret zone.loc2.longitude
-     radius: 75
-     icon: !secret zone.loc2.icon
+#   - name: !secret zone.loc2.name
+#     latitude: !secret zone.loc2.latitude
+#     longitude: !secret zone.loc2.longitude
+#     radius: 75
+#     icon: !secret zone.loc2.icon
      
-   - name: !secret zone.loc3.name
-     latitude: !secret zone.loc3.latitude
-     longitude: !secret zone.loc3.longitude
-     radius: 50
-     icon: !secret zone.loc3.icon
+#   - name: !secret zone.loc3.name
+#     latitude: !secret zone.loc3.latitude
+#     longitude: !secret zone.loc3.longitude
+#     radius: 50
+#     icon: !secret zone.loc3.icon

@@ -8,18 +8,13 @@
   name: Begane Grond 2
   input: !secret camera_begane_grond2.input
  
-- platform: ffmpeg
-  name: Achtertuin
-  input: !secret camera_achtertuin.input
+#- platform: ffmpeg
+#  name: Achtertuin
+#  input: !secret camera_achtertuin.input
 
 - platform: ffmpeg
   name: Straatzijde
   input: !secret camera_straatzijde.input
-
-- platform: mjpeg
-  name: 3D-Printer
-  still_image_url: http://10.1.1.148/webcam/?action=snapshot
-  mjpeg_url: http://10.1.1.148/webcam/?action=stream
 
 #- platform: synology
 #  url: https://treecentral.vandenboom.org:5001
