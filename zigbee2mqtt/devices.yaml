@@ -1,0 +1,55 @@
+'0x90fd9ffffe3135c2':
+  friendly_name: Buffetkast
+'0x00158d0002b6d2c4':
+  friendly_name: Landing 1st floor
+'0x00158d0002726273':
+  friendly_name: Schuifpui
+'0x804b50fffe433a85':
+  friendly_name: Aquarium Kim
+'0x84fd27fffee00579':
+  friendly_name: Aquarium Max
+'0x086bd7fffe207a04':
+  friendly_name: Ikea plug Zolder
+'0xbc33acfffeedf9e3':
+  friendly_name: Schakelaar Kantoor
+  optimistic: true
+  retain: true
+'0x00158d00026eed7f':
+  friendly_name: Frans Balkon
+'0x00158d00045da85c':
+  friendly_name: Woonkamer
+'0xcc86ecfffea17a15':
+  friendly_name: Aquarium Woonkamer
+'0x00158d00026eecea':
+  friendly_name: Raam Kim
+'0x5c0272fffec065d4':
+  friendly_name: Rookmelder 3D-printer
+'0x00158d0002726265':
+  friendly_name: Raam Max
+'0x5c0272fffebc1350':
+  friendly_name: Temp/Hum 3D-Printer
+  temperature_precision: 0
+  temperature_calibration: 0
+'0x00158d0006793071':
+  friendly_name: Multisensor Filament 1
+'0x00158d000678f26a':
+  friendly_name: Multisensor Filament 2
+'0x00158d00026eecf4':
+  friendly_name: Slot schuur
+'0x00158d0002b9335d':
+  friendly_name: Stairway 1st floor
+'0x00158d000234baab':
+  friendly_name: Watersensor Badkamer
+'0x00158d000365676a':
+  friendly_name: Schakelaar VIP-Lounge
+'0x00158d0002772b1a':
+  friendly_name: Multisensor Badkamer
+'0x00158d00045d9aee':
+  friendly_name: Stairway 2nd floor
+'0xa4c1382c80186f4c':
+  friendly_name: CO2 Sensor
+  temperature_precision: 0
+  voc_precision: 0
+  co2_precision: 0
+  co2_calibration: 0
+  voc_calibration: 0
