@@ -1,72 +1,83 @@
 title: "home"
 path: "home"
-type: custom:grid-layout
-    layout:
-      grid-template-columns: 33.33% 16.66% 16.66% 33.33%
-      grid-template-rows: auto 475px auto
+type: "custom:grid-layout"
+layout:
+  grid-template-columns: 33.33% 16.66% 16.66% 33.33%
+  grid-template-rows: auto 475px auto
+  grid-template-areas: |
+    "persons alarm alarm garbage"
+    "rooms focus focus groups"
+    "heating1 heating2 heating2 heating3"
+    "sensors1 sensors2 sensors2 sensors3"
+  mediaquery:
+    "(max-width: 600px)":
+      grid-template-columns: 100%
+      grid-template-rows: auto auto auto
       grid-template-areas: |
-        "persons alarm alarm garbage"
-        "rooms focus focus groups"
-        "heating1 heating2 heating2 heating3"
-        "sensors1 sensors2 sensors2 sensors3"
-      mediaquery:
-        '(max-width: 600px)':
-          grid-template-columns: 100%
-          grid-template-rows: auto auto auto
-          grid-template-areas: |
-            "alarm"
-            "persons"
-            "garbage"
-            "focus"
-            "rooms"
-            "groups"
-            "heating1"
-            "heating2"
-            "heating3"
-        '(max-width: 800px)':
-          grid-template-columns: 50% 50%
-          grid-template-areas: |
-            "alarm alarm"
-            "persons persons"
-            "center center"
-            "left right"
-            "footer footer"
+        "alarm"
+        "persons"
+        "garbage"
+        "focus"
+        "rooms"
+        "groups"
+        "heating1"
+        "heating2"
+        "heating3"
+    "(max-width: 800px)":
+      grid-template-columns: 50% 50%
+      grid-template-areas: |
+        "alarm alarm"
+        "persons persons"
+        "center center"
+        "left right"
+        "footer footer"
 cards:
-  - type: "custom:button-card"
-    template: "card_esh_welcome"
-    triggers_update: "input_boolean.minimalist_dropdown"
-    variables:
-      ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
-      ulm_weather: "weather.buienradar"
-      entity_1:
-        nav: "house"
-        icon: "mdi:home"
-        name: "House"
-        color: "blue"
-      entity_2:
-        nav: "lights"
-        icon: "mdi:lightbulb"
-        name: "Lights"
-        color: "yellow"
-      entity_3:
-        nav: "security"
-        icon: "mdi:shield"
-        name: Secure
-        color: "green"
-      entity_4:
-        nav: "network"
-        icon: "mdi:nas"
-        name: Lab
-        color: "purple"
-      entity_5:
-        nav: "network"
-        icon: "mdi:flask"
-        name: Lab
-        color: "red"
-
+  - view_layout:
+      grid-area: focus
+    type: conditional
+    conditions:
+      - entity: input_boolean.doorbell_pressed
+        state: "on"
+    card:
+      show_state: false
+      show_name: false
+      camera_view: live
+      type: picture-entity
+      entity: camera.voordeur_mediaprofile_channel1_mainstream
+      camera_image: camera.voordeur_mediaprofile_channel1_mainstream
+      aspect_ratio: 1.78:1
+      tap_action:
+        action: navigate
+        navigation_path: /lovelace/voordeur-camera
+      hold_action:
+        action: none
+  - type: conditional
+    conditions:
+      - entity: input_boolean.doorbell_pressed
+        state: "off"
+    card:
+      type: energy-distribution
+      link_dashboard: false
+    view_layout:
+      grid-area: focus
+  - type: conditional
+    conditions:
+      - entity: sensor.afval_vandaag
+        state_not: Geen
+      - entity: input_boolean.doorbell_pressed
+        state: "off"
+    card:
+      type: custom:mushroom-entity-card
+      entity: sensor.afval_vandaag
+      icon_type: entity-picture
+      layout: vertical
+      name: Vandaag
+      fill_container: true
+    view_layout:
+      grid-area: focus
   - type: horizontal-stack
     cards:
-      - type: 'custom:button-card'
+      - type: "custom:button-card"
         template: "card_person"
         entity: person.elliot
         variables:
@@ -75,4 +86,559 @@ cards:
           ulm_card_person_icon: mdi:face-woman
           ulm_card_person_battery: sensor.samsung_s22_elliot_battery_level
           ulm_card_person_eta: sensor.travel_time_to_home_elliot
-          ulm_address: sensor.samsung_s22_elliot_geocoded_location
+      #          ulm_address: sensor.samsung_s22_elliot_geocoded_location
+      - type: custom:mushroom-person-card
+        entity: person.jelica
+        icon_type: entity-picture
+        layout: vertical
+        fill_container: false
+      - type: custom:mushroom-person-card
+        entity: person.kim
+        icon_type: entity-picture
+        layout: vertical
+        fill_container: false
+      - type: custom:mushroom-person-card
+        entity: person.max
+        icon_type: entity-picture
+        layout: vertical
+        fill_container: false
+    view_layout:
+      grid-area: persons
+  - type: custom:mushroom-alarm-control-panel-card
+    entity: alarm_control_panel.alarmo
+    states:
+      - armed_home
+      - armed_away
+      - armed_night
+    show_keypad: false
+    fill_container: false
+    view_layout:
+      grid-area: alarm
+  - square: false
+    columns: 3
+    type: grid
+    cards:
+      - type: custom:mushroom-light-card
+        entity: light.verlichting_woonkamer
+        icon: mdi:lightbulb-group
+        use_light_color: true
+        layout: vertical
+        secondary_info: none
+        name: Woonkamer
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-nieuw/woonkamer
+        hold_action:
+          action: toggle
+      - type: custom:mushroom-climate-card
+        entity: climate.woonk_vloerv_2
+        name: Woonkamer
+        primary_info: none
+        fill_container: true
+        layout: horizontal
+        collapsible_controls: true
+        hvac_modes:
+          - auto
+          - heat
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-entity-card
+        entity: sensor.co2_sensor_co2
+        fill_container: true
+        layout: vertical
+        primary_info: none
+      - type: custom:mushroom-light-card
+        entity: light.verlichting_keuken
+        use_light_color: true
+        show_brightness_control: false
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-nieuw/keuken
+        hold_action:
+          action: toggle
+        double_tap_action:
+          action: toggle
+        name: Keuken
+        layout: vertical
+        secondary_info: none
+        icon: mdi:lightbulb-group
+        collapsible_controls: false
+    view_layout:
+      grid-area: rooms
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: sensor.afval_vandaag
+        icon_type: entity-picture
+        name: Vandaag
+        icon: mdi:trash-can-outline
+        layout: vertical
+        fill_container: false
+      - type: custom:mushroom-entity-card
+        entity: sensor.afval_morgen
+        icon_type: entity-picture
+        name: Morgen
+        icon: mdi:trash-can-outline
+        layout: vertical
+        fill_container: false
+      - type: custom:mushroom-entity-card
+        entity: sensor.afval_overmorgen
+        icon_type: entity-picture
+        name: Overmorgen
+        icon: mdi:trash-can-outline
+        layout: vertical
+        fill_container: false
+    view_layout:
+      grid-area: garbage
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:mushroom-chips-card
+    card_param: chips
+    filter:
+      include:
+        - group: light.all_light
+          state: "on"
+          options:
+            type: light
+            tap_action:
+              action: toggle
+            content_info: name
+            use_light_color: true
+            use_light_temperature: true
+    view_layout:
+      grid-area: groups
+  - square: false
+    columns: 3
+    type: grid
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.temp_woonk_vloerv
+        name: Woonkamer
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_036367_temperature
+        name: Woonaker Radiatoren
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_172225_temperature
+        name: Badkamer
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+    view_layout:
+      grid-area: heating1
+  - square: false
+    columns: 3
+    type: grid
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_036381_temperature
+        name: Master Bedroom
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_036383_temperature
+        name: Kamer Kim
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_036365_temperature
+        name: Kamer Max
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+    view_layout:
+      grid-area: heating2
+  - square: false
+    columns: 3
+    type: grid
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_172187_temperature
+        name: VIP-Lounge
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.34_142166_temperature
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.remotehasalectov1_036c_temp
+        name: Achtertuin
+        font_size: 80
+        font_size_header: 10
+        color_thresholds:
+          - color: "#ff0000"
+            value: 25
+          - color: "#ff4800"
+            value: 24
+          - color: "#ff8400"
+            value: 23.5
+          - color: "#ffb700"
+            value: 23
+          - color: "#ffdd00"
+            value: 22.5
+          - color: "#eeff00"
+            value: 22
+          - color: "#b3ff00"
+            value: 21.5
+          - color: "#00ff08"
+            value: 21
+          - color: "#00ff80"
+            value: 20.5
+          - color: "#00ffd5"
+            value: 20
+          - color: "#00ddff"
+            value: 19.5
+          - color: "#0077ff"
+            value: 19
+          - color: "#002fff"
+            value: 18.5
+          - color: "#2200ff"
+            value: 18
+          - color: "#7300ff"
+            value: 17.5
+          - color: "#b300ff"
+            value: 17
+          - color: "#fb00ff"
+            value: 16.5
+          - color: "#ff00aa"
+            value: 16
+    view_layout:
+      grid-area: heating3
+  - square: true
+    columns: 9
+    type: grid
+    cards:
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.woonkamer_motion_meta
+        name: Woonkamer
+        icon_color: yellow
+        fill_container: true
+        layout: vertical
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.pir_gang_home_security_motion_detection
+        icon_color: yellow
+        name: Gang
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.pir_fietsenschuur_home_security_motion_detection
+        name: Fietsenschuur
+        icon_color: yellow
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.landing_1st_floor_occupancy
+        icon_color: yellow
+        name: Overloop 1e
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.stairway_1st_floor_occupancy
+        name: Trap 1e
+        icon_color: yellow
+      - type: custom:mushroom-entity-card
+        entity: binary_sensor.stairway_2nd_floor_occupancy
+        name: Trap 2e
+        icon_color: yellow

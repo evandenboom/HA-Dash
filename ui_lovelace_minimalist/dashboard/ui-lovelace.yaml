@@ -5,4 +5,3 @@ title: "Minimalist"
 background: "var(--background-image)"
 views:
   - !include "views/home.yaml"
-
