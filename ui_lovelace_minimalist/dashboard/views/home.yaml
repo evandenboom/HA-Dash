@@ -1,5 +1,36 @@
 title: "home"
 path: "home"
+type: custom:grid-layout
+    layout:
+      grid-template-columns: 33.33% 16.66% 16.66% 33.33%
+      grid-template-rows: auto 475px auto
+      grid-template-areas: |
+        "persons alarm alarm garbage"
+        "rooms focus focus groups"
+        "heating1 heating2 heating2 heating3"
+        "sensors1 sensors2 sensors2 sensors3"
+      mediaquery:
+        '(max-width: 600px)':
+          grid-template-columns: 100%
+          grid-template-rows: auto auto auto
+          grid-template-areas: |
+            "alarm"
+            "persons"
+            "garbage"
+            "focus"
+            "rooms"
+            "groups"
+            "heating1"
+            "heating2"
+            "heating3"
+        '(max-width: 800px)':
+          grid-template-columns: 50% 50%
+          grid-template-areas: |
+            "alarm alarm"
+            "persons persons"
+            "center center"
+            "left right"
+            "footer footer"
 cards:
   - type: "custom:button-card"
     template: "card_esh_welcome"
