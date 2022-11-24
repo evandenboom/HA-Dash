@@ -6,30 +6,28 @@ homeassistant:
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
-      trusted_networks: 
-        !secret homeassistant.trusted_networks
+      trusted_networks: !secret homeassistant.trusted_networks
   customize: !include customize.yaml
   customize_glob: !include configuration/customize_glob/customize_glob.yaml
   allowlist_external_dirs:
     - /config/www/amazon-rekognition
-    - /config  
+    - /config
   media_dirs:
-    driveway_motion:  /config/www/driveway
-    audio:  /config/www/audio
+    driveway_motion: /config/www/driveway
+    audio: /config/www/audio
   external_url: https://hass.vandenboom.org:8143
   #  driveway_detect:  /config/www/amazon-rekognition
-
 
 media_source:
 energy:
 
- #>> The http integration serves all files and data required for the Home Assistant frontend. <<
+  #>> The http integration serves all files and data required for the Home Assistant frontend. <<
 http:
   server_port: !secret http.server_port
   ssl_certificate: !secret http.ssl_certificate
   ssl_key: !secret http.ssl_key
   ip_ban_enabled: true
-  login_attempts_threshold: 5 
+  login_attempts_threshold: 5
 
 #>> Additional configuration <<
 camera: !include_dir_merge_list configuration/cameras/
@@ -64,7 +62,7 @@ lovelace:
 
 #>> Display panels in the frontend to configure and manage parts of Home Assistant. <<
 config:
- 
+
 #>> Discover and automatically configure zeroconf/mDNS and UPnP devices on your network.<<
 discovery:
 
@@ -72,7 +70,7 @@ discovery:
 ffmpeg:
 
 #>> The stream integration provides a way to proxy live streams through Home Assistant. <<
-stream:  
+stream:
 
 #>>  This offers a map on the frontend to display the location of tracked devices  <<
 map:
@@ -80,16 +78,16 @@ map:
 #>> The Mobile App integration allows Home Assistant mobile apps to easily integrate with Home Assistant. <<
 mobile_app:
 
-#>> The person integration allows connecting device tracker entities to one or more person entities. <<  
+#>> The person integration allows connecting device tracker entities to one or more person entities. <<
 person:
 
 # >> The sun integration will use your current location to track if the sun is above or below the horizon. <<
 sun:
 
-# >> The System Health integration provides an API to offer information on the system and its components. <<  
+# >> The System Health integration provides an API to offer information on the system and its components. <<
 system_health:
 
-#>> Custom components <<  
+#>> Custom components <<
 lovelace_gen:
 
 #>> The manual alarm control panel platform enables you to create an alarm system in Home Assistant. <<
@@ -97,7 +95,7 @@ lovelace_gen:
 #  - platform: manual
 #    code: '1234'
 
-#>> InfluxDB integration (for use with Grafana, both externally hosted) <<  
+#>> InfluxDB integration (for use with Grafana, both externally hosted) <<
 influxdb:
   api_version: !secret influxdb.api_version
   host: !secret inlfuxdb.host
@@ -107,52 +105,52 @@ influxdb:
   bucket: !secret inlfuxdb.bucket
   ssl: false
   verify_ssl: false
-#  database: !secret inlfuxdb.database
-#  username: !secret inlfuxdb.username
-#  password: !secret inlfuxdb.password
+  #  database: !secret inlfuxdb.database
+  #  username: !secret inlfuxdb.username
+  #  password: !secret inlfuxdb.password
   max_retries: 3
   exclude:
     domains:
-       - automation
-       - camera
-       - device_tracker
-       - group
-       - input_boolean
-       - input_select
-       - input_text
-       - person
-       - remote
-       - script
-       - zone
-       - calendar
-       - zwave
+      - automation
+      - camera
+      - device_tracker
+      - group
+      - input_boolean
+      - input_select
+      - input_text
+      - person
+      - remote
+      - script
+      - zone
+      - calendar
+      - zwave
     entities:
-       - sensor.01_108436_fault_log
+      - sensor.01_108436_fault_log
 
 image_processing:
-    - platform: amazon_rekognition
-      aws_access_key_id: !secret aws_access_key_id
-      aws_secret_access_key: !secret aws_secret_access_key
-      region_name: eu-west-1 # optional region, default is us-east-1
-      confidence: 60 # Optional, default is 80 percent
-      targets:
-        - target: person
-          confidence: 85
-        - target: car
-          confidence: 85
-        - target: pet
-        - target: animal
-        - target: cat
-        - target: dog
-          confidence: 50
-      roi_y_min: 0.15 # optional, range 0-1, must be less than roi_y_max
-      roi_x_min: 0.05 # optional, range 0-1, must be less than roi_y_max
-      save_file_folder: /config/www/amazon-rekognition/ # Optional image storage
-      save_timestamped_file: True # Set True to save timestamped images, default False
-      always_save_latest_file: True
-      source:
-        - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
-        - entity_id: camera.achtertuin_schuur_prof0_name
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1 # optional region, default is us-east-1
+    confidence: 60 # Optional, default is 80 percent
+    targets:
+      - target: person
+        confidence: 85
+      - target: car
+        confidence: 85
+      - target: pet
+      - target: animal
+      - target: cat
+      - target: dog
+        confidence: 50
+    roi_y_min: 0.15 # optional, range 0-1, must be less than roi_y_max
+    roi_x_min: 0.05 # optional, range 0-1, must be less than roi_y_max
+    save_file_folder: /config/www/amazon-rekognition/ # Optional image storage
+    save_timestamped_file: True # Set True to save timestamped images, default False
+    always_save_latest_file: True
+    source:
+      - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+      - entity_id: camera.achtertuin_schuur_prof0_name
 
 tts:
   - platform: google_translate

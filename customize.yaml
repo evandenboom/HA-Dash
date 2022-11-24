@@ -99,39 +99,40 @@ binary_sensor.raam_max_contact:
   device_class: window
 sensor.p1_meter_3c39e727c82a_total_power_export_t1:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: energy
 sensor.p1_meter_3c39e727c82a_total_power_export_t2:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: energy
 sensor.p1_meter_3c39e727c82a_total_power_import_t1:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: energy
 sensor.p1_meter_3c39e727c82a_total_power_import_t2:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: energy
 sensor.solaredge_lifetime_energy:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: energy
 sensor.solaredge_lifetime_energy_kwh:
   device_class: energy
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
 sensor.wasmachine_electric_consumption_kwh:
   device_class: energy
   state_class: measurement
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
 sensor.watermeter_3c39e72d5f22_total_water_usage:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
   device_class: water
 sensor.kamstrup_403_heat_energy_to_gas:
   state_class: total_increasing
-  last_reset: '1970-01-01T00:00:00+00:00'
+  last_reset: "1970-01-01T00:00:00+00:00"
 sensor.current_humidity:
-  device_class: humidifier
-
+  device_class: humidity
+person.elliot:
+  travelhome: sensor.travel_time_elliot_to_home

@@ -77,18 +77,13 @@ cards:
       grid-area: focus
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
-        template: "card_person"
-        entity: person.elliot
-        variables:
-          ulm_card_person_entity: person.elliot
-          ulm_card_person_use_entity_picture: true
-          ulm_card_person_icon: mdi:face-woman
-          ulm_card_person_battery: sensor.samsung_s22_elliot_battery_level
-          ulm_card_person_eta: sensor.travel_time_to_home_elliot
-      #          ulm_address: sensor.samsung_s22_elliot_geocoded_location
       - type: custom:mushroom-person-card
         entity: person.jelica
+        icon_type: entity-picture
+        layout: vertical
+        fill_container: false
+      - type: custom:mushroom-person-card
+        entity: person.elliot
         icon_type: entity-picture
         layout: vertical
         fill_container: false

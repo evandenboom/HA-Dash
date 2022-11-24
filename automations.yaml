@@ -1045,3 +1045,18 @@
       entity_id: input_boolean.doorbell_pressed
   mode: parallel
   max: 10
+- id: '1669298743837'
+  alias: Travel Time Update
+  description: ''
+  trigger:
+  - platform: time_pattern
+    minutes: '1'
+    hours: '0'
+    seconds: '0'
+  condition: []
+  action:
+  - service: homeassistant.update_entity
+    data: {}
+    target:
+      entity_id: sensor.travel_time_kim_to_home
+  mode: single

@@ -1,26 +1,5 @@
-# sensors
-    
-#- platform: rflink
-#  automatic_add: false
-
-#- platform: systemmonitor
-#  resources:
-#    - type: processor_use
-#   - type: memory_use_percent
-#   - type: disk_use_percent
-  
 - platform: template
   sensors:
-#    grid_power_consumption:
-#      friendly_name: 'Grid power consumption'
-#      unit_of_measurement: 'W'
-#      value_template: >-
-#        {{ (1000 * (states("sensor.power_consumption")) | float) | int }}
-#    grid_power_production:
-#      friendly_name: 'Grid power production'
-#      unit_of_measurement: 'W'
-#      value_template: >-
-#        {{ (1000 * (states("sensor.power_production")) | float) | int }}
     irrigation_weather_outlook:
       friendly_name: "Irrigation weather outlook"
       value_template: "{{ state_attr('sensor.current_weather_owm', 'temp') }}"
@@ -29,110 +8,41 @@
   sensors:
     temp_woonk_vloerv:
       friendly_name: "Woonk. Vloerv."
-      unit_of_measurement: '°C'
-      value_template: "{{ state_attr('climate.controller', 'current_temperature') }}"     
+      unit_of_measurement: "°C"
+      value_template: "{{ state_attr('climate.controller', 'current_temperature') }}"
 
 - platform: time_date
   display_options:
-    - 'time'
-    - 'date'
-    - 'date_time'
-    - 'date_time_utc'
-    - 'date_time_iso'
-    - 'time_date'
-    - 'time_utc'
-    - 'beat'
-
-- platform: template
-  sensors:
-    average_house_temperature:
-      value_template: '{{ states.sensor.average_temperature.state }}°C'
-
-- platform: template
-  sensors:
-    current_scenes_on:
-      friendly_name: All Scenes Currently On
-      value_template: >-
-        {{ states|selectattr('entity_id','in',state_attr('group.alle_scenes','entity_id'))|selectattr('state','eq','on')|list|count }}
-
-#- platform: template
-#  sensors:
-#    media_players_playing:
-#      value_template: >
-#        {% if states.media_player.google_home_kantoor.state == 'playing' %}
-#          Playing
-#        {% elif states.media_player.google_home_woonkamer.state == 'playing' %}
-#          Playing
-#        {% elif states.media_player.stb_arris_uhd.state == 'playing' %}
-#          Playing
-#        {% elif states.media_player.stb_arris_uhd_2.state == 'playing' %}
-#          Playing
-#        {% elif states.media_player.google_home_kantoor.state == 'paused' %}
-#          Paused
-#        {% elif states.media_player.google_home_woonkamer.state == 'paused' %}
-#          Paused
-#        {% elif states.media_player.stb_arris_uhd.state.state == 'paused' %}
-#          Paused
-#        {% elif states.media_player.stb_arris_uhd_2.state == 'paused' %}
-#          Paused
-#        {% else %}
-#          Not Playing
-#        {% endif %}     
-
-#- platform: template
-#  sensors:
-#    current_power_usage:
-#      value_template: "{{ (states('sensor.grid_power_consumption')|float * 1000) |round(0) }} W"
-#      unit_of_measurement: 'W'
-#      friendly_name: Current Power Usage
+    - "time"
+    - "date"
+    - "date_time"
+    - "date_time_utc"
+    - "date_time_iso"
+    - "time_date"
+    - "time_utc"
+    - "beat"
 
 - platform: template
   sensors:
     smartphone_kim_battery_level:
-      value_template: '{{ state_attr("device_tracker.google_maps_115305887383945385383", "battery_level")}}%'
+      value_template: '{{ state_attr("device_tracker.google_maps_115305887383945385383", "battery_level")}}'
 
 - platform: template
   sensors:
     smartphone_max_battery_level:
-      value_template: '{{ state_attr("device_tracker.google_maps_104742499472119555757", "battery_level")}}%'
+      value_template: '{{ state_attr("device_tracker.google_maps_104742499472119555757", "battery_level")}}'
 
-#- platform: template
-#  sensors:
-#    octoprint_finish:
-#      value_template: '{{ (((states("sensor.octoprint_time_remaining")) | float ) + as_timestamp(now()) ) | timestamp_custom("%H:%M") }}'
-
-#- platform: template
-#  sensors:
-#    octoprint_remaining_time:
-#      value_template: >-
-#        {% set seconds = states("sensor.octoprint_time_remaining") | int %}
-#        {% set minutes = ((seconds % 3600) / 60) | int %}
-#        {% set hours = ((seconds % 86400) / 3600) | int %}
-#        {% set days = (seconds / 86400) | int %}
-#        {%- if days -%}{{days}} day{{'s, ' if days > 1 else ', '}}{%- endif -%}
-#        {%- if hours -%}{{hours}} hour{{'s, ' if hours > 1 else ', '}}{%- endif -%}
-#        {%- if seconds > 59 -%}{{minutes}} minute{{'s' if minutes > 1}}{%- endif -%}
-#        {%- if seconds < 60 and seconds > 0 -%}< 1 minute{%- endif -%}
-
-#- platform: template
-#  sensors:
-#    octoprint_elapsed_time:
-#      value_template: >-
-#        {% set seconds = states("sensor.octoprint_time_elapsed") | int %}
-#        {% set minutes = ((seconds % 3600) / 60) | int %}
-#        {% set hours = ((seconds % 86400) / 3600) | int %}
-#        {% set days = (seconds / 86400) | int %}
-#        {%- if days -%}{{days}} day{{'s, ' if days > 1 else ', '}}{%- endif -%}
-#        {%- if hours -%}{{hours}} hour{{'s, ' if hours > 1 else ', '}}{%- endif -%}
-#        {%- if seconds > 59 -%}{{minutes}} minute{{'s' if minutes > 1}}{%- endif -%}
-#        {%- if seconds < 60 and seconds > 0 -%}< 1 minute{%- endif -%}
+- platform: template
+  sensors:
+    smartphone_jelica_battery_level:
+      value_template: '{{ state_attr("device_tracker.google_maps_110946189396379150601", "battery_level")}}'
 
 - platform: template
   sensors:
     solaredge_lifetime_energy_kwh:
-        friendly_name: 'Solar Lifetime kwh'
-        unit_of_measurement: 'kWh'
-        value_template: "{{ states('sensor.solaredge_lifetime_energy') | float / 1000 }}"
+      friendly_name: "Solar Lifetime kwh"
+      unit_of_measurement: "kWh"
+      value_template: "{{ states('sensor.solaredge_lifetime_energy') | float / 1000 }}"
 
 - platform: template
   sensors:
@@ -140,60 +50,59 @@
       value_template: '{{ state_attr("humidifier.humidifier", "current_humidity")}}'
       friendly_name: Current Humidity
       attribute_templates:
-          humidity: '{{ state_attr("humidifier.humidifier", "current_humidity")}}'
-      
-      
+        humidity: '{{ state_attr("humidifier.humidifier", "current_humidity")}}'
+
 - platform: template
   sensors:
     current_power_consumption:
       friendly_name: "Energie Verbruik (totaal)"
-      unit_of_measurement: 'W'
-      value_template: '{{ states("sensor.solaredge_current_power") |float + states("sensor.p1_meter_3c39e727c82a_active_power") | float }}'     
-      
+      unit_of_measurement: "W"
+      value_template: '{{ states("sensor.solaredge_current_power") |float + states("sensor.p1_meter_3c39e727c82a_active_power") | float }}'
+
 - platform: template
   sensors:
     afval_vandaag:
       value_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_today') %}
-          {% if afvalsoort == "gft" %}GFT
-          {% elif afvalsoort == "plastic" %}PMD
-          {% elif afvalsoort == "papier" %}Papier
-          {% else %}Geen
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_today') %}
+        {% if afvalsoort == "gft" %}GFT
+        {% elif afvalsoort == "plastic" %}PMD
+        {% elif afvalsoort == "papier" %}Papier
+        {% else %}Geen
+        {%- endif %}
       entity_picture_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_today') %}
-          {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
-          {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
-          {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
-          {% else %}
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_today') %}
+        {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
+        {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
+        {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
+        {% else %}
+        {%- endif %}
     afval_morgen:
       value_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_tomorrow') %}
-          {% if afvalsoort == "gft" %}GFT
-          {% elif afvalsoort == "plastic" %}PMD
-          {% elif afvalsoort == "papier" %}Papier
-          {% else %}Geen
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_tomorrow') %}
+        {% if afvalsoort == "gft" %}GFT
+        {% elif afvalsoort == "plastic" %}PMD
+        {% elif afvalsoort == "papier" %}Papier
+        {% else %}Geen
+        {%- endif %}
       entity_picture_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_tomorrow') %}
-          {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
-          {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
-          {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
-          {% else %}
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_tomorrow') %}
+        {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
+        {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
+        {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
+        {% else %}
+        {%- endif %}
     afval_overmorgen:
       value_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_day_after_tomorrow') %}
-          {% if afvalsoort == "gft" %}GFT
-          {% elif afvalsoort == "plastic" %}PMD
-          {% elif afvalsoort == "papier" %}Papier
-          {% else %}Geen
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_day_after_tomorrow') %}
+        {% if afvalsoort == "gft" %}GFT
+        {% elif afvalsoort == "plastic" %}PMD
+        {% elif afvalsoort == "papier" %}Papier
+        {% else %}Geen
+        {%- endif %}
       entity_picture_template: >-
-          {% set afvalsoort = states('sensor.afvalwijzer_day_after_tomorrow') %}
-          {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
-          {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
-          {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
-          {% else %}
-          {%- endif %}
+        {% set afvalsoort = states('sensor.afvalwijzer_day_after_tomorrow') %}
+        {% if afvalsoort == "gft" %}/local/mijnafvalwijzer/gft3.png
+        {% elif afvalsoort == "plastic" %}/local/mijnafvalwijzer/plastic3.png
+        {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
+        {% else %}
+        {%- endif %}
