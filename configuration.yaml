@@ -135,6 +135,29 @@ image_processing:
     confidence: 60 # Optional, default is 80 percent
     targets:
       - target: person
+        confidence: 60
+      - target: car
+        confidence: 60
+      - target: pet
+      - target: animal
+      - target: cat
+      - target: dog
+        confidence: 50
+    roi_y_min: 0.15 # optional, range 0-1, must be less than roi_y_max
+    roi_x_min: 0.05 # optional, range 0-1, must be less than roi_y_max
+    save_file_format: png
+    save_file_folder: /config/www/amazon-rekognition/ # Optional image storage
+    save_timestamped_file: True # Set True to save timestamped images, default False
+    always_save_latest_file: True
+    source:
+      - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  - platform: amazon_rekognition
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-west-1 # optional region, default is us-east-1
+    confidence: 60 # Optional, default is 80 percent
+    targets:
+      - target: person
         confidence: 85
       - target: car
         confidence: 85
@@ -145,11 +168,11 @@ image_processing:
         confidence: 50
     roi_y_min: 0.15 # optional, range 0-1, must be less than roi_y_max
     roi_x_min: 0.05 # optional, range 0-1, must be less than roi_y_max
+    save_file_format: png
     save_file_folder: /config/www/amazon-rekognition/ # Optional image storage
     save_timestamped_file: True # Set True to save timestamped images, default False
     always_save_latest_file: True
     source:
-      - entity_id: camera.voordeur_mediaprofile_channel1_mainstream
       - entity_id: camera.achtertuin_schuur_prof0_name
 
 tts:

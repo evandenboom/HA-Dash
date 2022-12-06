@@ -3,11 +3,11 @@
 - platform: ffmpeg
   name: Begane Grond
   input: !secret camera_begane_grond.input
-   
+
 - platform: ffmpeg
   name: Begane Grond 2
   input: !secret camera_begane_grond2.input
- 
+
 #- platform: ffmpeg
 #  name: Achtertuin
 #  input: !secret camera_achtertuin.input
@@ -22,3 +22,8 @@
 #  password: 3Vdb8458
 #  verify_ssl: false
 
+- platform: proxy
+  entity_id: camera.voordeur_mediaprofile_channel1_mainstream
+  name: camera.voordeur_resized
+  mode: resize
+  max_stream_width: 360

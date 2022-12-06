@@ -18,3 +18,10 @@
 #  icon: mdi:home-assistant
 #  show_in_sidebar: true
 #  filename: configuration/dashboards/views/3dprinter.yaml
+
+main-dash:
+  mode: yaml
+  title: Main
+  icon: mdi:home-assistant
+  show_in_sidebar: true
+  filename: configuration/dashboards/main.yaml

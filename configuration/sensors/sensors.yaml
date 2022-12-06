@@ -106,3 +106,26 @@
         {% elif afvalsoort == "papier" %}/local/mijnafvalwijzer/papier3.png
         {% else %}
         {%- endif %}
+
+- platform: template
+  sensors:
+    kamstrup_403_heat_energy_to_gas_m3:
+      value_template: "{{ (states('sensor.kamstrup_403_heat_energy_e1')|float(0) * 26.137)|round(2) }}"
+
+- platform: template
+  sensors:
+    persons_driveway:
+      value_template: '{{ state_attr("image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream", "summary")["person"]}}'
+      friendly_name: persons on driveway
+
+- platform: template
+  sensors:
+    cars_driveway:
+      value_template: '{{ state_attr("image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream", "summary")["car"]}}'
+      friendly_name: cars on driveway
+
+- platform: template
+  sensors:
+    persons_backyard:
+      value_template: '{{ state_attr("image_processing.rekognition_achtertuin_schuur_prof0_name", "summary")["person"]}}'
+      friendly_name: persons in backyard

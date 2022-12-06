@@ -678,16 +678,18 @@
   alias: Notify when a car is on the driveway
   description: ''
   trigger:
-  - platform: numeric_state
-    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
-    above: '1'
-    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.car
-      }}'
-  - platform: numeric_state
-    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
-    below: '3'
-    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.car
-      }}'
+  - platform: state
+    entity_id:
+    - sensor.cars_driveay
+    from: '0'
+  - platform: state
+    entity_id:
+    - sensor.cars_driveay
+    from: '1'
+  - platform: state
+    entity_id:
+    - sensor.cars_driveay
+    from: '2'
   condition: []
   action:
   - service: input_text.set_value
@@ -737,11 +739,10 @@
   alias: Notify when a person is on the driveway
   description: ''
   trigger:
-  - platform: numeric_state
-    entity_id: image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream
-    above: 0
-    value_template: '{{ states. image_processing.rekognition_voordeur_mediaprofile_channel1_mainstream.attributes.summary.person
-      }}'
+  - platform: state
+    entity_id:
+    - sensor.persons_driveway
+    from: '0'
   condition: []
   action:
   - service: tts.google_say
@@ -967,11 +968,10 @@
   alias: Notify when a person is in the backyard
   description: ''
   trigger:
-  - platform: numeric_state
-    entity_id: image_processing.rekognition_achtertuin_schuur_prof0_name
-    above: '0'
-    value_template: '{{ states. image_processing.rekognition_achtertuin_schuur_prof0_name.attributes.summary.person
-      }}'
+  - platform: state
+    entity_id:
+    - sensor.persons_backyard
+    from: '0'
   condition: []
   action:
   - service: input_text.set_value
@@ -1050,13 +1050,15 @@
   description: ''
   trigger:
   - platform: time_pattern
-    minutes: '1'
-    hours: '0'
-    seconds: '0'
+    minutes: /1
   condition: []
   action:
   - service: homeassistant.update_entity
     data: {}
     target:
       entity_id: sensor.travel_time_kim_to_home
+  - service: homeassistant.update_entity
+    data: {}
+    target:
+      entity_id: sensor.travel_time_jelica_to_home
   mode: single

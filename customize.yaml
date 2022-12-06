@@ -134,5 +134,11 @@ sensor.kamstrup_403_heat_energy_to_gas:
   last_reset: "1970-01-01T00:00:00+00:00"
 sensor.current_humidity:
   device_class: humidity
-person.elliot:
-  travelhome: sensor.travel_time_elliot_to_home
+  unit_of_measurement: "%"
+sensor.kamstrup_403_heat_energy_to_gas_m3:
+  state_class: total_increasing
+  device_class: gas
+  icon: mdi:heating-coil
+  last_reset: 1970-01-01T00:00:00+00:00
+  friendly_name: "Heat Energy to Gas in m³"
+  unit_of_measurement: "m³"

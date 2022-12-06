@@ -1,0 +1,80 @@
+button_card_templates: !include_dir_merge_named configuration/dashboards/button_card/
+
+views:
+  - title: Woonkamer
+    path: woonkamer
+    badges: []
+    cards:
+      - type: custom:button-card
+        name: Woonkamer
+        entity: light.lamp_kantoor
+        show_label: false
+        show_icon: false
+        card_size: 5
+        color_type: card
+        color: auto
+        tap_action:
+          action: toggle
+        double_tap_action:
+          action: more-info
+        styles:
+          name:
+            - position: absolute
+            - left: 5%
+            - top: 5%
+          card:
+            - height: 200px
+          custom_fields:
+            value1:
+              - position: absolute
+              - left: 60%
+              - top: 10%
+              - height: 20px
+              - width: 30px
+              - font-size: 12px
+              - line-height: 20px
+            button1:
+              - position: absolute
+              - left: 10%
+              - top: 60%
+            info1:
+              - position: absolute
+              - right: 5%
+              - top: 5%
+            info2:
+              - position: absolute
+              - right: 10%
+              - bottom: 10%
+
+        state:
+          - value: "on"
+            styles:
+              label:
+                - color: black
+              card:
+                - -webkit-box-shadow: 0px 0px 9px 9px var(--button-card-light-color-no-temperature)
+                - box-shadow: 0px 0px 9px 9px var(--button-card-light-color-no-temperature)
+        custom_fields:
+          value1: |
+            [[[
+              var bri = states['light.lamp_kantoor'].state;
+              return '' + (bri ? Math.round(bri/2.55) + "%": '');
+              ]]]
+          button1:
+            card:
+              type: custom:mushroom-light-card
+              entity: light.lamp_kantoor
+              use_light_color: true
+          info1:
+            card:
+              type: custom:mushroom-entity-card
+              entity: sensor.co2_sensor_co2
+              primary_info: state
+              secondary_info: none
+          info2:
+            card:
+              type: custom:mushroom-chips-card
+              chips:
+                - type: entity
+                  entity: sensor.current_humidity
+                  icon_color: light-blue
